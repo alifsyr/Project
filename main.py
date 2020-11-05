@@ -26,12 +26,15 @@ while (not endprogram):
     command = str(input("$ "))
 
 # DUMMY ARRAY FOR CURRENT USER
-load(dragonborn_data)
-dummy_arr = []
-rows = 0
 
-for row in reader:
-    dummy_arr.append(row)
-    rows = rows + 1
 
-return dummy_arr
+def dummy_array():
+    load(dragonborn_data)
+    dummy_arr = []
+    rows = 0
+
+    for row in reader:
+        dummy_arr.append(row)
+        rows = rows + 1
+
+    return dummy_arr
