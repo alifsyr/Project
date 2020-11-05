@@ -19,23 +19,24 @@ Ali Zayn Murteza
 '''
 
 endprogram = False
-currentUser = [" $NOUSER", " %NOUSER", " $NOUSER",
-               " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER"]
+currentUser = [" $NOUSER", "$NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER"]
 
 while (not endprogram):
     print("Welcome to Skuyrim")
     dragonborn_data, item_data, monster_data, sidequest_data = F11_savegameandloadgame.load()
-
-    command = str(input("$ "))
-    if command == "create newChar":
+    
+    print("Choose your character or create new character :")
+    newChar, currentUser = F11_savegameandloadgame.dataload(dragonborn_data, currentUser)
+    if (newChar):
         dragonborn_data, currentuser = F01_createdragonborn.createdragonborn(dragonborn_data, currentUser)
 
-    elif command == "exit":
+    command = str(input("$ "))
+
+    if command == "exit":
         simpan = F12_exitgame.exit()
         if (simpan):
             data = [dragonborn_data, item_data, monster_data, sidequest_data]
-            names = ["Dragonborn.csv", "Item.csv",
-                     "Monster.csv", "Sidequest.csv"]
-            F11_savegameandloadgame.save(data, names)
+            names = ["Dragonborn.csv", "Item.csv","Monster.csv", "Sidequest.csv"]
+            F11_savegameandloadgame.save(data, names, currentUser)
         endprogram = True
 
