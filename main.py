@@ -21,6 +21,7 @@ Ali Zayn Murteza
 '''
 
 endprogram = False
+currentUser = [" $NOUSER", " %NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER"]
 
 while (not endprogram):
     print("Welcome to Skuyrim")
@@ -28,7 +29,8 @@ while (not endprogram):
 
     command = str(input("$ "))
     if command == "create newChar":
-        dragonborn_data, current_user
+        dragonborn_data, currentuser = F01_createdragonborn.createdragonborn(dragonborn_data, currentUser)
+        
     elif command == "exit":
         simpan = F12_exitgame.exit()
         if (simpan):
