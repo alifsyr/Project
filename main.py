@@ -1,8 +1,11 @@
 # Tugas Besar IF1210 Dasar pemrograman
 # Kelompok Stormcloak
 
-import F11_savegameandloadgame,F12_exitgame
+import csv
+import F11_savegameandloadgame
+import F12_exitgame
 from F11_savegameandloadgame import loadfile
+import random
 '''
 Zachrandika Alif Syahreza
 Dimas Farhan Anshari
@@ -26,19 +29,20 @@ while (not endprogram):
 
     command = str(input("$ "))
     if command == "exit":
-                simmpan = F12_exitgame.exit()
-                if (simmpan):
-                    data = [dragonborn_data, item_data, monster_data, sidequest_data]
-                    names = ["Dragonborn.csv", "Item.csv", "Monster.csv", "Sidequest.csv"]
-                    F11_savegameandloadgame.save(data, names)
-                endprogram = True
+        simpan = F12_exitgame.exit()
+        if (simpan):
+            data = [dragonborn_data, item_data, monster_data, sidequest_data]
+            names = ["Dragonborn.csv", "Item.csv",
+                     "Monster.csv", "Sidequest.csv"]
+            F11_savegameandloadgame.save(data, names)
+        endprogram = True
 
 # DUMMY ARRAY FOR CURRENT USER
 
 
-def dummy_array():
-    load(dragonborn_data)
-    dummy_arr = []
+def dummy_array():  # Harusnya pake login lebih efektif, karena kita tinggal
+    load(dragonborn_data)  # masukin data user sesuai nama character yang sudah
+    dummy_arr = []  # ada di dragonbron.csv
     rows = 0
 
     for row in reader:
@@ -46,3 +50,15 @@ def dummy_array():
         rows = rows + 1
 
     return dummy_arr
+
+
+class final_boss:
+    def __init__(self, Attack, Defense, HP):
+        self.Attlow = -17
+        self.Atthigh = +100
+        self.MaxHP = HP
+        self.Def = Defense
+        self.HP = HP
+
+    def gen_dmg(self):
+        return random.randrange(self.Attlow, self.Atthigh)
