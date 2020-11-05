@@ -2,8 +2,7 @@
 # Kelompok Stormcloak
 
 import csv
-import F11_savegameandloadgame
-import F12_exitgame
+import F01_createdragonborn,F04_monsterbattleandexplore,F06_Shopping,F08_alduskuy,F11_savegameandloadgame,F12_exitgame
 from F11_savegameandloadgame import loadfile
 import random
 '''
@@ -22,18 +21,21 @@ Ali Zayn Murteza
 '''
 
 endprogram = False
+currentUser = [" $NOUSER", " %NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER"]
 
 while (not endprogram):
     print("Welcome to Skuyrim")
     dragonborn_data, item_data, monster_data, sidequest_data = F11_savegameandloadgame.load()
 
     command = str(input("$ "))
-    if command == "exit":
+    if command == "create newChar":
+        dragonborn_data, currentuser = F01_createdragonborn.createdragonborn(dragonborn_data, currentUser)
+        
+    elif command == "exit":
         simpan = F12_exitgame.exit()
         if (simpan):
             data = [dragonborn_data, item_data, monster_data, sidequest_data]
-            names = ["Dragonborn.csv", "Item.csv",
-                     "Monster.csv", "Sidequest.csv"]
+            names = ["Dragonborn.csv", "Item.csv","Monster.csv", "Sidequest.csv"]
             F11_savegameandloadgame.save(data, names)
         endprogram = True
 
