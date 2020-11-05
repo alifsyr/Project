@@ -1,10 +1,8 @@
 # Tugas Besar IF1210 Dasar pemrograman
 # Kelompok Stormcloak
 
-import csv
-import F01_createdragonborn,F04_battleandexplore,F06_Shopping,F08_alduskuy,F11_savegameandloadgame,F12_exitgame
-from F11_savegameandloadgame import loadfile
-import random
+import F01_createdragonborn,F06_Shopping,F08_alduskuy,F11_savegameandloadgame,F12_exitgame
+
 '''
 Zachrandika Alif Syahreza
 Dimas Farhan Anshari
