@@ -25,6 +25,13 @@ while (not endprogram):
     dragonborn_data, item_data, monster_data, sidequest_data = F11_savegameandloadgame.load()
 
     command = str(input("$ "))
+    if command == "exit":
+                simmpan = F12_exitgame.exit()
+                if (simmpan):
+                    data = [dragonborn_data, item_data, monster_data, sidequest_data]
+                    names = ["Dragonborn.csv", "Item.csv", "Monster.csv", "Sidequest.csv"]
+                    F11_savegameandloadgame.save(data, names)
+                endprogram = True
 
 # DUMMY ARRAY FOR CURRENT USER
 
