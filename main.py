@@ -4,3 +4,14 @@
 '''
 Zachrandika Alif Syahreza
 '''
+
+# KAMUS GLOBAL
+'''
+
+'''
+
+endprogram      = False
+
+while (not endprogram):
+    
+    command = str(input("$ "))
