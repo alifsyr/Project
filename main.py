@@ -2,7 +2,12 @@
 # Kelompok Stormcloak
 
 import csv
-import F01_createdragonborn,F04_monsterbattleandexplore,F06_Shopping,F08_alduskuy,F11_savegameandloadgame,F12_exitgame
+import F01_createdragonborn
+import F04_monsterbattleandexplore
+import F06_Shopping
+import F08_alduskuy
+import F11_savegameandloadgame
+import F12_exitgame
 from F11_savegameandloadgame import loadfile
 import random
 '''
@@ -21,7 +26,8 @@ Ali Zayn Murteza
 '''
 
 endprogram = False
-currentUser = [" $NOUSER", " %NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER"]
+currentUser = [" $NOUSER", " %NOUSER", " $NOUSER",
+               " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER"]
 
 while (not endprogram):
     print("Welcome to Skuyrim")
@@ -29,13 +35,15 @@ while (not endprogram):
 
     command = str(input("$ "))
     if command == "create newChar":
-        dragonborn_data, currentuser = F01_createdragonborn.createdragonborn(dragonborn_data, currentUser)
-        
+        dragonborn_data, currentuser = F01_createdragonborn.createdragonborn(
+            dragonborn_data, currentUser)
+
     elif command == "exit":
         simpan = F12_exitgame.exit()
         if (simpan):
             data = [dragonborn_data, item_data, monster_data, sidequest_data]
-            names = ["Dragonborn.csv", "Item.csv","Monster.csv", "Sidequest.csv"]
+            names = ["Dragonborn.csv", "Item.csv",
+                     "Monster.csv", "Sidequest.csv"]
             F11_savegameandloadgame.save(data, names)
         endprogram = True
 
@@ -71,6 +79,9 @@ class final_boss:
 
     def dmg_taken(self, dmg):
         self.HP = self.HP - dmg
-        if ((self.HP) <= 0):
+        return self.HP
+
+    def boss_death(self):
+        if (self.HP < 0):
             self.HP = 0
         return self.HP
