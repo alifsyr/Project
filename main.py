@@ -1,7 +1,7 @@
 # Tugas Besar IF1210 Dasar pemrograman
 # Kelompok Stormcloak
 
-import F11_savegameandloadgame
+import F11_savegameandloadgame,F12_exitgame
 from F11_savegameandloadgame import loadfile
 '''
 Zachrandika Alif Syahreza
