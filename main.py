@@ -2,6 +2,7 @@
 # Kelompok Stormcloak
 
 import F11_savegameandloadgame
+from F11_savegameandloadgame import loadfile
 '''
 Zachrandika Alif Syahreza
 Dimas Farhan Anshari
@@ -16,10 +17,21 @@ Dimas Farhan Anshari
     sidequest_data  : array of array of string
 '''
 
-endprogram      = False
+endprogram = False
 
 while (not endprogram):
     print("Welcome to Skuyrim")
     dragonborn_data, item_data, monster_data, sidequest_data = F11_savegameandloadgame.load()
 
     command = str(input("$ "))
+
+# DUMMY ARRAY FOR CURRENT USER
+load(dragonborn_data)
+dummy_arr = []
+rows = 0
+
+for row in reader:
+    dummy_arr.append(row)
+    rows = rows + 1
+
+return dummy_arr
