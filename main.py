@@ -52,7 +52,7 @@ def dummy_array():  # Harusnya pake login lebih efektif, karena kita tinggal
     return dummy_arr
 
 
-class final_boss:
+class final_boss:            #Untuk membuat object(Final boss= "Alduskuy"), digunakan fungsi class. di F08 saya sudah membuat final_bossnya dengan ketentuan tertentu
     def __init__(self, Attack, Defense, HP):
         self.Attlow = -17
         self.Atthigh = +100
