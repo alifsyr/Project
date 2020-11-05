@@ -30,7 +30,7 @@ while (not endprogram):
     command = str(input("$ "))
     if command == "create newChar":
         dragonborn_data, currentuser = F01_createdragonborn.createdragonborn(dragonborn_data, currentUser)
-        
+
     elif command == "exit":
         simpan = F12_exitgame.exit()
         if (simpan):
@@ -38,21 +38,6 @@ while (not endprogram):
             names = ["Dragonborn.csv", "Item.csv","Monster.csv", "Sidequest.csv"]
             F11_savegameandloadgame.save(data, names)
         endprogram = True
-
-# DUMMY ARRAY FOR CURRENT USER
-
-
-def dummy_array():  # Harusnya pake login lebih efektif, karena kita tinggal
-    load(dragonborn_data)  # masukin data user sesuai nama character yang sudah
-    dummy_arr = []  # ada di dragonbron.csv
-    rows = 0
-
-    for row in reader:
-        dummy_arr.append(row)
-        rows = rows + 1
-
-    return dummy_arr
-
 
 class final_boss:            #Untuk membuat object(Final boss= "Alduskuy"), digunakan fungsi class. di F08 saya sudah membuat final_bossnya dengan ketentuan tertentu
     def __init__(self, Attack, Defense, HP):
