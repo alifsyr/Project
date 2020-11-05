@@ -4,7 +4,9 @@
 import F11_savegameandloadgame
 '''
 Zachrandika Alif Syahreza
+Dimas Farhan Anshari
 '''
+
 
 # KAMUS GLOBAL
 '''
