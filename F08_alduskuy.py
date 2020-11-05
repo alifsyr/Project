@@ -1,4 +1,4 @@
-from main import dummy_array, final_boss
+from object import final_boss
 from F04_battleandexplore import battle
 from F01_createdragonborn import createdragonborn
 from F03_explore import explore
