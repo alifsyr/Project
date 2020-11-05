@@ -2,7 +2,7 @@
 # Kelompok Stormcloak
 
 import csv
-import F01_createdragonborn,F04_monsterbattleandexplore,F06_Shopping,F08_alduskuy,F11_savegameandloadgame,F12_exitgame
+import F01_createdragonborn,F04_battleandexplore,F06_Shopping,F08_alduskuy,F11_savegameandloadgame,F12_exitgame
 from F11_savegameandloadgame import loadfile
 import random
 '''
@@ -38,12 +38,6 @@ while (not endprogram):
             names = ["Dragonborn.csv", "Item.csv","Monster.csv", "Sidequest.csv"]
             F11_savegameandloadgame.save(data, names)
         endprogram = True
-
-class final_boss:            #Untuk membuat object(Final boss= "Alduskuy"), digunakan fungsi class. di F08 saya sudah membuat final_bossnya dengan ketentuan tertentu
-    def __init__(self, Attack, Defense, HP):
-        self.Attlow = -17
-        self.Atthigh = +100
-        self.MaxHP = HP
 
 # Untuk membuat object(Final boss= "Alduskuy"), digunakan fungsi class. di F08 saya sudah membuat final_bossnya dengan ketentuan tertentu
 class final_boss:
