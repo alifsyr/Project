@@ -23,4 +23,5 @@ def createdragonborn(dragonborn_data):
         else :
             print("Nomor yang anda masukkan tidak sesuai!")
             faction = int(input("Masukkan nomor faction diatas (1/2): "))
-    return currentuser
+            
+    return dragonborn_data, currentuser
