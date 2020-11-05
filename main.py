@@ -1,15 +1,8 @@
 # Tugas Besar IF1210 Dasar pemrograman
 # Kelompok Stormcloak
 
-import csv
-import F01_createdragonborn
-import F04_monsterbattleandexplore
-import F06_Shopping
-import F08_alduskuy
-import F11_savegameandloadgame
-import F12_exitgame
-from F11_savegameandloadgame import loadfile
-import random
+import F01_createdragonborn,F06_Shopping,F08_alduskuy,F11_savegameandloadgame,F12_exitgame
+
 '''
 Zachrandika Alif Syahreza
 Dimas Farhan Anshari
@@ -35,8 +28,7 @@ while (not endprogram):
 
     command = str(input("$ "))
     if command == "create newChar":
-        dragonborn_data, currentuser = F01_createdragonborn.createdragonborn(
-            dragonborn_data, currentUser)
+        dragonborn_data, currentuser = F01_createdragonborn.createdragonborn(dragonborn_data, currentUser)
 
     elif command == "exit":
         simpan = F12_exitgame.exit()
@@ -47,41 +39,3 @@ while (not endprogram):
             F11_savegameandloadgame.save(data, names)
         endprogram = True
 
-# DUMMY ARRAY FOR CURRENT USER
-
-
-def dummy_array():  # Harusnya pake login lebih efektif, karena kita tinggal
-    load(dragonborn_data)  # masukin data user sesuai nama character yang sudah
-    dummy_arr = []  # ada di dragonbron.csv
-    rows = 0
-
-    for row in reader:
-        dummy_arr.append(row)
-        rows = rows + 1
-
-    return dummy_arr
-
-
-# Untuk membuat object(Final boss= "Alduskuy"), digunakan fungsi class. di F08 saya sudah membuat final_bossnya dengan ketentuan tertentu
-class final_boss:
-    def __init__(self, Attack, Defense, BOSS_HP):
-        self.Attlow = -30
-        self.Atthigh = +70
-        self.MaxHP = BOSS_HP
-        self.Def = Defense
-        self.HP = BOSS_HP
-
-    def gen_dmg(self):
-        return random.randrange(self.Attlow, self.Atthigh)
-
-    def hp_boss(self):
-        return self.HP
-
-    def dmg_taken(self, dmg):
-        self.HP = self.HP - dmg
-        return self.HP
-
-    def boss_death(self):
-        if (self.HP < 0):
-            self.HP = 0
-        return self.HP
