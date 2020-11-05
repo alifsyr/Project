@@ -6,6 +6,7 @@ from F11_savegameandloadgame import loadfile
 '''
 Zachrandika Alif Syahreza
 Dimas Farhan Anshari
+Ali Zayn Murteza
 '''
 
 
