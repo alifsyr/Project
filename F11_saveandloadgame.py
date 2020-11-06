@@ -26,6 +26,7 @@ def dataload(dragonborn_data,currentUser):
         if i[1] == command:
             newChar = False
             currentUser = i
+            print("Welcome back to the world of Skuyrim "+currentUser[1]+"!")
             return newChar, currentUser
     if command == "create newChar":
         newChar = True

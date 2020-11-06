@@ -26,6 +26,7 @@ dragonborn_data, item_data, monster_data, sidequest_data = F11_saveandloadgame.l
 
 print("Choose your character or create new character :")
 newChar, currentUser = F11_saveandloadgame.dataload(dragonborn_data, currentUser)
+
 if (newChar):
     dragonborn_data, currentUser = F01_createdragonborn.createdragonborn(dragonborn_data, currentUser)
 
@@ -34,6 +35,11 @@ while (not endprogram):
 
     if command == "status":
         F02_attribute.attribute(currentUser)
+    
+    elif command == "save":
+        data = [dragonborn_data, item_data, monster_data, sidequest_data]
+        names = ["Dragonborn.csv", "Item.csv","Monster.csv", "Sidequest.csv"]
+        F11_saveandloadgame.save(data, names, currentUser)
 
     elif command == "exit":
         simpan = F12_exitgame.exit()
@@ -41,5 +47,6 @@ while (not endprogram):
             data = [dragonborn_data, item_data, monster_data, sidequest_data]
             names = ["Dragonborn.csv", "Item.csv","Monster.csv", "Sidequest.csv"]
             F11_saveandloadgame.save(data, names, currentUser)
+        print("Thanks for playing skuyrim, goodbye!")
         endprogram = True
 
