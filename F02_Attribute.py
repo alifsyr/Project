@@ -1,4 +1,3 @@
-import csv
 def attribute(currentUser):
     print("Attack : "+currentUser[5])
     print("Magic : "+currentUser[6])

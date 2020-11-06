@@ -1,5 +1,3 @@
-import modules
-
 def createdragonborn(dragonborn_data,currentUser):
     nama = input("Nama Dragonborn: ")
     for i in (dragonborn_data):
@@ -8,12 +6,11 @@ def createdragonborn(dragonborn_data,currentUser):
             if int(i[0]) > maks:
                 maks = int(i[0])
     ID = maks + 1
-    
-            
+
     print("newChar created")
     print("Welcome "+str(nama)+" to the world of Skuyrim!")
     print("Choose one faction: ")
-    print("1. Empire (+ 1 atatck)")
+    print("1. Empire (+ 1 attack)")
     print("2. Stormcloaks (+ 1 magic)")
     faction = int(input("Masukkan nomor faction diatas(1/2): "))
     while True:
