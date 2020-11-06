@@ -18,25 +18,27 @@ def loadfile(x):
 def dataload(dragonborn_data,currentUser):
     dummy = [" $NOUSER", "$NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER"]
     for i in (dragonborn_data):
-        if i[1] != 'id':
+        if i[1] != 'Nama':
             print(str(i[1])+" - lvl "+i[4])
+
     command = input("$ ")
     for i in (dragonborn_data):
-        if i[1] != 'ID':
-            if i[2] == command:
-                currentUser = i
-                return False, currentUser
+        if i[1] == command:
+            newChar = False
+            currentUser = i
+            return newChar, currentUser
     if command == "create newChar":
-        return True, dummy
+        newChar = True
+        return newChar, dummy
 
 
 def save(data, names,currentUser):
     import modules
     folderDirectory = "data/"
     for i in range(modules.panjang(names)):     # Melakukan looping berdasarkan panjang array names
-        name = str(folderDirectory + names)     # input nama file csv
+        name = str(folderDirectory + names[i])     # input nama file csv
         writeFile(name, data[i])    # Memanggil fungsi writeFile
-    print('Your progress on character' + str(currentUser[1]) + 'has been saved')
+    print('Your progress on character', str(currentUser[1]) ,'has been saved')
     
 def writeFile(namaFile, arrayData):
     
