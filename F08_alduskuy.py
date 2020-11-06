@@ -15,8 +15,7 @@ def alduskuy():
 
     Alduskuy_attacked = Alduskuy.dmg_taken()
     Alduskuy_HP = Alduskuy.hp_boss()
-    print("Alduskuy took", Alduskuy_attacked,
-          "and health dropped to", Alduskuy_HP)
+    print("Alduskuy took", Alduskuy_attacked,"and health dropped to", Alduskuy_HP)
     Alduskuy_Death = Alduskuy.boss_death()
     if (Alduskuy_Death):
         print("You have won the game!")
