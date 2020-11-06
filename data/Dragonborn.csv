@@ -1,6 +1,7 @@
-ID,Nama,Max.HP,HP,Level,Attack,Magic,Defense,Luck,Exp,Sidequest
-1,Acolyte Jenssen,100,100,1,5,5,5,0,0,null
-2,Fara,100,100,1,5,5,5,0,0,null
-3,Alif,100,100,1,6,5,5,0,0,null
-4,Zeus,100,100,1,6,5,5,0,0,null
-5,Ngepet,100,100,1,6,5,5,0,0,null
+ID,Nama,Max.HP,HP,Level,Attack,Magic,Defense,Luck,Exp,City,Sidequest
+1,Acolyte Jenssen,100,100,1,5,5,5,0,0,Windhelm,null
+2,Fara,100,100,1,5,5,5,0,0,Windhelm,null
+3,Alif,100,100,1,6,5,5,0,0,Solitude,null
+4,Zeus,100,100,1,6,5,5,0,0,Solitude,null
+5,Ngepet,100,100,1,6,5,5,0,0,Windhelm,null
+6,kontol,100,100,1,6,5,5,0,0,Solitude,null

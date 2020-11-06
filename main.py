@@ -1,7 +1,7 @@
 # Tugas Besar IF1210 Dasar pemrograman
 # Kelompok Stormcloak
 
-import F01_createdragonborn,F02_attribute,F11_saveandloadgame,F12_exitgame
+import F01_createdragonborn, F02_Attribute, F11_saveandloadgame, F12_exitgame, F06_Shopping
 
 '''
 Zachrandika Alif Syahreza
@@ -21,34 +21,38 @@ Muhammad Farhan
 '''
 
 endprogram = False
-currentUser = [" $NOUSER", "$NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER"]
+currentUser = [" $NOUSER", "$NOUSER", " $NOUSER", " $NOUSER", " $NOUSER",
+               " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER"]
 
 print("Welcome to Skuyrim")
 dragonborn_data, item_data, monster_data, sidequest_data = F11_saveandloadgame.load()
 
 print("Choose your character or create new character :")
-newChar, currentUser = F11_saveandloadgame.dataload(dragonborn_data, currentUser)
+newChar, currentUser = F11_saveandloadgame.dataload(
+    dragonborn_data, currentUser)
 
 if (newChar):
-    dragonborn_data, currentUser = F01_createdragonborn.createdragonborn(dragonborn_data, currentUser)
+    dragonborn_data, currentUser = F01_createdragonborn.createdragonborn(
+        dragonborn_data, currentUser)
 
 while (not endprogram):
     command = str(input("$ "))
 
     if command == "status":
-        F02_attribute.attribute(currentUser)
-    
+        F02_Attribute.attribute(currentUser)
+    elif command == "shopping":
+        F06_Shopping.shop(currentUser, item_data)
     elif command == "save":
         data = [dragonborn_data, item_data, monster_data, sidequest_data]
-        names = ["Dragonborn.csv", "Item.csv","Monster.csv", "Sidequest.csv"]
+        names = ["Dragonborn.csv", "Item.csv", "Monster.csv", "Sidequest.csv"]
         F11_saveandloadgame.save(data, names, currentUser)
 
     elif command == "exit":
         simpan = F12_exitgame.exit()
         if (simpan):
             data = [dragonborn_data, item_data, monster_data, sidequest_data]
-            names = ["Dragonborn.csv", "Item.csv","Monster.csv", "Sidequest.csv"]
+            names = ["Dragonborn.csv", "Item.csv",
+                     "Monster.csv", "Sidequest.csv"]
             F11_saveandloadgame.save(data, names, currentUser)
         print("Thanks for playing skuyrim, goodbye!")
         endprogram = True
-

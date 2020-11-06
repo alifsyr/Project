@@ -11,7 +11,7 @@ def alduskuy():
     print("1.Strike", "dmg")
     print("2.Magic")
     print("3.Flee")
-    inp = int(input("Your choice here: "))
+    inp = int(input("$ "))
 
     Alduskuy_HP = Alduskuy.hp_boss()
     while ((Alduskuy_HP) != 0):
@@ -25,11 +25,11 @@ def alduskuy():
                 print("1.Strike", "dmg")
                 print("2.Magic")
                 print("3.Flee")
-                inp = int(input("Your choice here: "))
+                inp = int(input("$ "))
             else:
                 print("You have won the game!")
                 print("You can create a new character or continue playing")
-                choice = str(input())
+                choice = str(input("$ "))
                 if (choice == "Create"):
                     createdragonborn()
                 else:
