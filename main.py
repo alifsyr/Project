@@ -1,7 +1,7 @@
 # Tugas Besar IF1210 Dasar pemrograman
 # Kelompok Stormcloak
 
-import F01_createdragonborn,F06_Shopping,F08_alduskuy,F11_savegameandloadgame,F12_exitgame
+import F01_createdragonborn,F02_attribute,F11_saveandloadgame,F12_exitgame
 
 '''
 Zachrandika Alif Syahreza
@@ -21,22 +21,25 @@ Ali Zayn Murteza
 endprogram = False
 currentUser = [" $NOUSER", "$NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER"]
 
-while (not endprogram):
-    print("Welcome to Skuyrim")
-    dragonborn_data, item_data, monster_data, sidequest_data = F11_savegameandloadgame.load()
-    
-    print("Choose your character or create new character :")
-    newChar, currentUser = F11_savegameandloadgame.dataload(dragonborn_data, currentUser)
-    if (newChar):
-        dragonborn_data, currentuser = F01_createdragonborn.createdragonborn(dragonborn_data, currentUser)
+print("Welcome to Skuyrim")
+dragonborn_data, item_data, monster_data, sidequest_data = F11_saveandloadgame.load()
 
+print("Choose your character or create new character :")
+newChar, currentUser = F11_saveandloadgame.dataload(dragonborn_data, currentUser)
+if (newChar):
+    dragonborn_data, currentUser = F01_createdragonborn.createdragonborn(dragonborn_data, currentUser)
+
+while (not endprogram):
     command = str(input("$ "))
 
-    if command == "exit":
+    if command == "status":
+        F02_attribute.attribute(currentUser)
+
+    elif command == "exit":
         simpan = F12_exitgame.exit()
         if (simpan):
             data = [dragonborn_data, item_data, monster_data, sidequest_data]
             names = ["Dragonborn.csv", "Item.csv","Monster.csv", "Sidequest.csv"]
-            F11_savegameandloadgame.save(data, names, currentUser)
+            F11_saveandloadgame.save(data, names, currentUser)
         endprogram = True
 

@@ -17,6 +17,12 @@ database        : array, urutkan array ini
 column          : int, berdasarkan kolom ini
 order           : string, 'ascending' atau 'descending'
 '''
+def largest(arr,n): 
+    max = arr[0] 
+    for i in range(1, n): 
+        if arr[i] > max: 
+            max = arr[i] 
+    return max
 
 def intSort(database, column, order):
     for i in range(panjang(database)):
