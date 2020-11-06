@@ -1,4 +1,6 @@
 import random
+
+
 class final_boss:
     def __init__(self, Attack, Defense, BOSS_HP):
         self.Attlow = -30
