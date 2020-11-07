@@ -1,11 +1,10 @@
 import csv
 
-
 def load():
-    dragonborn_data = loadfile("data/Dragonborn.csv")
-    item_data = loadfile("data/Item.csv")
-    monster_data = loadfile("data/Monster.csv")
-    sidequest_data = loadfile("data/Sidequest.csv")
+    dragonborn_data = loadfile("data/dragonborn.csv")
+    item_data       = loadfile("data/item.csv")
+    monster_data    = loadfile("data/monster.csv")
+    sidequest_data  = loadfile("data/sidequest.csv")
 
     return dragonborn_data, item_data, monster_data, sidequest_data
 
@@ -41,8 +40,8 @@ def save(data, names, currentUser):
     folderDirectory = "data/"
     # Melakukan looping berdasarkan panjang array names
     for i in range(modules.panjang(names)):
-        name = str(folderDirectory + names[i])     # input nama file csv
-        writeFile(name, data[i])    # Memanggil fungsi writeFile
+        name = str(folderDirectory + names[i])
+        writeFile(name, data[i])    
     print('Your progress on character', str(currentUser[1]), 'has been saved')
 
 
