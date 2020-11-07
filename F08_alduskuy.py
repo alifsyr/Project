@@ -2,7 +2,7 @@ from object import final_boss
 from F01_createdragonborn import createdragonborn
 from F12_exitgame import exit
 
-Alduskuy = final_boss(200, 60, 1000)
+Alduskuy = final_boss(200, 70, 10000)
 
 
 def alduskuy():
