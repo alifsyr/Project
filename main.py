@@ -33,20 +33,20 @@ if (newChar):
     dragonborn_data, currentUser = F01_createdragonborn.createdragonborn(dragonborn_data, currentUser)
 
 while (not endprogram):
-    command = str(input("$ "))
+    command = str(input("$ ")).capitalize()
 
-    if command == "status":
+    if command == "Status":
         F02_attribute.attribute(currentUser)
 
-    elif command == "shopping":
+    elif command == "Shopping":
         F06_shopping.shop(currentUser, item_data)
 
-    elif command == "save":
+    elif command == "Save":
         data = [dragonborn_data, item_data, monster_data, sidequest_data]
         names = ["dragonborn.csv","item.csv","monster.csv","sidequest.csv"]
         F11_saveandloadgame.save(data, names, currentUser)
 
-    elif command == "exit":
+    elif command == "Exit":
         simpan = F12_exitgame.exit()
         if (simpan):
             data = [dragonborn_data, item_data, monster_data, sidequest_data]

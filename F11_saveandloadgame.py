@@ -23,14 +23,14 @@ def dataload(dragonborn_data, currentUser):
         if i[1] != 'Nama':
             print(str(i[1])+" - lvl "+i[4])
 
-    command = input("$ ")
+    command, = str(input("$ ")).capitalize()
     for i in (dragonborn_data):
         if i[1] == command:
             newChar = False
             currentUser = i
             print("Welcome back to the world of Skuyrim "+currentUser[1]+"!")
             return newChar, currentUser
-    if command == "create newChar":
+    if command == "Create NewChar":
         newChar = True
         return newChar, dummy
 
