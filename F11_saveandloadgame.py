@@ -19,8 +19,7 @@ def loadfile(x):
 
 
 def dataload(dragonborn_data, currentUser):
-    dummy = [" $NOUSER", "$NOUSER", " $NOUSER", " $NOUSER", " $NOUSER",
-             " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER"]
+    dummy = [" $NOUSER", "$NOUSER", " $NOUSER", " $NOUSER", " $NOUSER"," $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER"]
     for i in (dragonborn_data):
         if i[1] != 'Nama':
             print(str(i[1])+" - lvl "+i[4])
