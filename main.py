@@ -1,11 +1,7 @@
 # Tugas Besar IF1210 Dasar pemrograman
 # Kelompok Stormcloak
 
-import F01_createdragonborn
-import F02_attribute
-import F06_shopping
-import F11_saveandloadgame
-import F12_exitgame
+import F01_createdragonborn, F02_Attribute, F06_Shopping, F11_saveandloadgame, F12_exitgame
 
 '''
 Zachrandika Alif Syahreza
