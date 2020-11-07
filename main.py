@@ -1,7 +1,7 @@
 # Tugas Besar IF1210 Dasar pemrograman
 # Kelompok Stormcloak
 
-import F01_createdragonborn, F02_Attribute, F06_Shopping, F11_saveandloadgame, F12_exitgame
+import F01_createdragonborn, F02_attribute, F06_Shopping, F11_saveandloadgame, F12_exitgame
 
 '''
 Zachrandika Alif Syahreza
@@ -21,8 +21,7 @@ Muhammad Farhan
 '''
 
 endprogram = False
-currentUser = [" $NOUSER", "$NOUSER", " $NOUSER", " $NOUSER", " $NOUSER",
-               " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER"]
+currentUser = [" $NOUSER", "$NOUSER", " $NOUSER", " $NOUSER", " $NOUSER"" $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER"]
 
 print("Welcome to Skuyrim")
 dragonborn_data, item_data, monster_data, sidequest_data = F11_saveandloadgame.load()
@@ -32,17 +31,17 @@ newChar, currentUser = F11_saveandloadgame.dataload(
     dragonborn_data, currentUser)
 
 if (newChar):
-    dragonborn_data, currentUser = F01_createdragonborn.createdragonborn(
-        dragonborn_data, currentUser)
+    dragonborn_data, currentUser = F01_createdragonborn.createdragonborn(dragonborn_data, currentUser)
 
 while (not endprogram):
+    gold = 0
     command = str(input("$ ")).capitalize()
 
     if command == "Status":
         F02_attribute.attribute(currentUser)
 
     elif command == "Shopping":
-        F06_shopping.shop(currentUser, item_data)
+        F06_Shopping.shop(currentUser, item_data)
 
     elif command == "Save":
         data = [dragonborn_data, item_data, monster_data, sidequest_data]
@@ -53,8 +52,7 @@ while (not endprogram):
         simpan = F12_exitgame.exit()
         if (simpan):
             data = [dragonborn_data, item_data, monster_data, sidequest_data]
-            names = ["dragonborn.csv", "item.csv",
-                     "monster.csv", "sidequest.csv"]
+            names = ["dragonborn.csv", "item.csv","monster.csv", "sidequest.csv"]
             F11_saveandloadgame.save(data, names, currentUser)
         print("Thanks for playing skuyrim, goodbye!")
         endprogram = True
