@@ -1,7 +1,11 @@
 # Tugas Besar IF1210 Dasar pemrograman
 # Kelompok Stormcloak
 
-import F01_createdragonborn, F02_attribute, F06_shopping, F11_saveandloadgame, F12_exitgame
+import F01_createdragonborn
+import F02_attribute
+import F06_shopping
+import F11_saveandloadgame
+import F12_exitgame
 
 '''
 Zachrandika Alif Syahreza
@@ -21,16 +25,19 @@ Muhammad Farhan
 '''
 
 endprogram = False
-currentUser = [" $NOUSER", "$NOUSER", " $NOUSER", " $NOUSER", " $NOUSER"," $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER"]
+currentUser = [" $NOUSER", "$NOUSER", " $NOUSER", " $NOUSER", " $NOUSER",
+               " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER"]
 
 print("Welcome to Skuyrim")
 dragonborn_data, item_data, monster_data, sidequest_data = F11_saveandloadgame.load()
 
 print("Choose your character or create new character :")
-newChar, currentUser = F11_saveandloadgame.dataload(dragonborn_data, currentUser)
+newChar, currentUser = F11_saveandloadgame.dataload(
+    dragonborn_data, currentUser)
 
 if (newChar):
-    dragonborn_data, currentUser = F01_createdragonborn.createdragonborn(dragonborn_data, currentUser)
+    dragonborn_data, currentUser = F01_createdragonborn.createdragonborn(
+        dragonborn_data, currentUser)
 
 while (not endprogram):
     command = str(input("$ ")).capitalize()
@@ -43,14 +50,15 @@ while (not endprogram):
 
     elif command == "Save":
         data = [dragonborn_data, item_data, monster_data, sidequest_data]
-        names = ["dragonborn.csv","item.csv","monster.csv","sidequest.csv"]
+        names = ["dragonborn.csv", "item.csv", "monster.csv", "sidequest.csv"]
         F11_saveandloadgame.save(data, names, currentUser)
 
     elif command == "Exit":
         simpan = F12_exitgame.exit()
         if (simpan):
             data = [dragonborn_data, item_data, monster_data, sidequest_data]
-            names = ["dragonborn.csv","item.csv","monster.csv","sidequest.csv"]
+            names = ["dragonborn.csv", "item.csv",
+                     "monster.csv", "sidequest.csv"]
             F11_saveandloadgame.save(data, names, currentUser)
         print("Thanks for playing skuyrim, goodbye!")
         endprogram = True
