@@ -33,7 +33,7 @@ if (newChar):
     dragonborn_data, currentUser = F01_createdragonborn.createdragonborn(dragonborn_data, currentUser)
 
 while (not endprogram):
-    gold = 0
+    gold = 1000
     command = str(input("$ ")).capitalize()
 
     if command == "Status":
