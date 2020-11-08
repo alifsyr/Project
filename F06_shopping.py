@@ -5,7 +5,7 @@ def shop(currentUser, item_data, n):
     item = [["ID", "Nama", "Besar", "Tipe", "Gold"]]
     item = printitem(item_data,currentUser,item)
     print("99.exit")
-    buy(n, item)
+    gold = buy(n, item)
 
 def buy(n,item):
     print("You have", n, "gold")
@@ -18,6 +18,7 @@ def buy(n,item):
                 print("your current gold is", n)
             elif (inp == 99):
                 exit()
+    return n
 
 def printitem(item_data, currentUser,item):
     num = 1
