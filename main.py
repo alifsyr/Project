@@ -40,7 +40,7 @@ while (not endprogram):
         F02_attribute.attribute(currentUser)
 
     elif command == "Shopping":
-        F06_shopping.shop(currentUser, item_data)
+        F06_shopping.shop(currentUser, item_data, gold)
 
     elif command == "Save":
         data = [dragonborn_data, item_data, monster_data, sidequest_data]

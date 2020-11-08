@@ -1,8 +1,7 @@
 
-def shop(currentUser, item_data):
+def shop(currentUser, item_data, n):
     print("Everything's for sale my friend. Everything. If I had a sister, I'd sell her in a second")
     print("For sale:")
-    n = 1000
     if ((currentUser[10]) == "Windhelm"):
         num = 1
         dumm = [["ID", "Nama", "TipeItem", "Gold"]]
