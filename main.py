@@ -1,7 +1,7 @@
 # Tugas Besar IF1210 Dasar pemrograman
 # Kelompok Stormcloak
 
-import F01_createdragonborn, F02_attribute, F06_Shopping, F11_saveandloadgame, F12_exitgame
+import F01_createdragonborn, F02_attribute, F06_shopping, F11_saveandloadgame, F12_exitgame
 
 '''
 Zachrandika Alif Syahreza
@@ -40,7 +40,7 @@ while (not endprogram):
         F02_attribute.attribute(currentUser)
 
     elif command == "Shopping":
-        F06_Shopping.shop(currentUser, item_data)
+        F06_shopping.shop(currentUser, item_data)
 
     elif command == "Save":
         data = [dragonborn_data, item_data, monster_data, sidequest_data]
