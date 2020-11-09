@@ -6,29 +6,36 @@ def Level_Up():
      add=int(input("add attribute : "))
      if add==1 or add==2 or add==3 or add=4 or add==5 :
           if add==1 :
-          	    Health=Health+10
-                print("Your max Health has increased to "+str(Health)+" health")
-                print("Your current health also increased also to "+str(Health)+" health")
-                return Health
+          	    currentUser[2]=int(currentUser[2])+10
+                currentUser[2]=str(currentUser[2])
+                currentUser[3]=int(currentUser[3])+10
+                currentUser[3]=str(currentUser[3])
+                print("Your max Health has increased to "+currentUser[2]+" health")
+                print("Your current health also increased also to "+currentUser[3]+" health")
+                return currentUser[3]
           elif add==2 :
-          	    Attack=Attack+10
-                print("Your Attack has increased to "+str(Attack)+" attack")
-                return Attack
+          	    currentUser[5]=int(currentUser[5])+10
+                currentUser[5]=str(currentUser[5])
+                print("Your Attack has increased to "+currentUser[5]+" attack")
+                return currentUser[5]
           elif add==3 :
-          	    Defense=Defense+10
-                print("Your Defense has increased to "+str(Defense)+" Defense")
-                return Defense
+          	    currentUser[7]=int(currentUser[7])+10
+                currentUser[7]=str(currentUser[7])
+                print("Your Defense has increased to "+currentUser[7]+" Defense")
+                return currentUser[7]
           elif add==4 :
-          	    Magic=Magic+10
-                print("Your Magic has increased to "+str( Magic)+" magic")
-                return Magic
+          	    currentUser[6]=int(currentUser[6])+10
+                currentUser[6]=str(currentUser[6])
+                print("Your Magic has increased to "+currentUser[6]+" magic")
+                return currentUser[6]
           else : # add==5
-                Luck=Luck+10
-                print("Your Luck has increased to "+str(Luck)+" luck")
-                return Luck
+                currentUser[8]=int(currentUser[8])+10
+                currentUser[8]=str(currentUser[8])
+                print("Your Luck has increased to "+currentUser[8]+" luck")
+                return currentUser[8]
      else :
           print("Attribute does not exist")
-          return 0
+          return 
 
 
 
