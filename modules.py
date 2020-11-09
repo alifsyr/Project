@@ -1,3 +1,5 @@
+import random 
+
 '''
 MODULES.PY
 
@@ -17,35 +19,13 @@ database        : array, urutkan array ini
 column          : int, berdasarkan kolom ini
 order           : string, 'ascending' atau 'descending'
 '''
-def largest(arr,n): 
-    max = arr[0] 
-    for i in range(1, n): 
-        if arr[i] > max: 
-            max = arr[i] 
-    return max
+def randomchoice(x):
+    choice = random.choice(x)
+    return choice
 
-def intSort(database, column, order):
-    for i in range(panjang(database)):
-        # Mengurutkan data berdasarkan kolom berisi integer
-        if (i > 0):
-            current = i
-            selected = i-1
-            
-            if (order == "ascending"):
-                while (int(database[current][column]) < int(database[selected][column]) and selected>=0):
-                    temp = database[selected]
-                    database[selected] = database[current]
-                    database[current] = temp
-                    selected -= 1
-                    current -= 1
-            else:
-               while (int(database[current][column]) > int(database[selected][column]) and selected>=0):
-                    temp = database[selected]
-                    database[selected] = database[current]
-                    database[current] = temp
-                    selected -= 1
-                    current -= 1 
-    return database
+def randomrange(x):
+    choice = random.randrange(x)
+    return choice
 
 def strSort(database, column, order):
     for i in range(panjang(database)):
@@ -62,7 +42,7 @@ def strSort(database, column, order):
                     selected -= 1
                     current -= 1
             else:
-               while ((stringOrder(database[current][column], database[selected][column])) and selected>=0):
+                while ((stringOrder(database[current][column], database[selected][column])) and selected>=0):
                     temp = database[selected]
                     database[selected] = database[current]
                     database[current] = temp

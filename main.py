@@ -1,7 +1,7 @@
 # Tugas Besar IF1210 Dasar pemrograman
 # Kelompok Stormcloak
 
-import F01_createdragonborn, F02_attribute, F06_shopping, F11_saveandloadgame, F12_exitgame
+import F01_createdragonborn, F02_attribute, F03_explore, F04_foundmonster, F05_foundgold, F06_shopping, F11_saveandloadgame, F12_exitgame
 
 '''
 Zachrandika Alif Syahreza
@@ -20,7 +20,8 @@ Muhammad Farhan
     sidequest_data  : array of array of string
 '''
 
-endprogram = False
+endprogram  = False
+gold        = 100
 currentUser = [" $NOUSER", "$NOUSER", " $NOUSER", " $NOUSER", " $NOUSER"" $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER"]
 
 print("Welcome to Skuyrim")
@@ -33,14 +34,33 @@ if (newChar):
     dragonborn_data, currentUser = F01_createdragonborn.createdragonborn(dragonborn_data, currentUser)
 
 while (not endprogram):
-    gold = 1000
     command = str(input("$ ")).capitalize()
 
-    if command == "Status":
-        F02_attribute.attribute(currentUser)
+    if   command == "Status":
+        F02_attribute.attribute(currentUser, gold)
+
+    elif command == "Explore":
+        result = F03_explore.explore(currentUser)
+        if (result == "gold"):
+            gold, currentUser = F05_foundgold.foundgold(currentUser, gold)
+
+        else:
+            currentUser, quit, create, gold = F04_foundmonster.foundmonster(currentUser, monster_data, gold)
+            if (quit):
+                simpan = F12_exitgame.exit()
+                if (simpan):
+                    data = [dragonborn_data, item_data, sidequest_data]
+                    names = ["dragonborn.csv", "item.csv", "sidequest.csv"]
+                    F11_saveandloadgame.save(data, names, currentUser)
+
+                print("Thanks for playing skuyrim, goodbye!")
+                endprogram = True
+
+            elif (create):
+                dragonborn_data, currentUser = F01_createdragonborn.createdragonborn(dragonborn_data, currentUser)
 
     elif command == "Shopping":
-        F06_shopping.shop(currentUser, item_data, gold)
+        gold, currentUser = F06_shopping.shop(currentUser, item_data, gold)
 
     elif command == "Save":
         data = [dragonborn_data, item_data, monster_data, sidequest_data]
@@ -50,8 +70,9 @@ while (not endprogram):
     elif command == "Exit":
         simpan = F12_exitgame.exit()
         if (simpan):
-            data = [dragonborn_data, item_data, monster_data, sidequest_data]
-            names = ["dragonborn.csv", "item.csv","monster.csv", "sidequest.csv"]
+            data = [dragonborn_data, item_data, sidequest_data]
+            names = ["dragonborn.csv", "item.csv", "sidequest.csv"]
             F11_saveandloadgame.save(data, names, currentUser)
+
         print("Thanks for playing skuyrim, goodbye!")
         endprogram = True
