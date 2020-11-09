@@ -1,33 +1,39 @@
 def Level_Up():
      print("You got "+str(exp)+" EXP")
+     print("You leveled up!")
      print("Choose what attribute to increase :")
      print("1.Health\n2.Attack\n3.Defense\n4.Magic\n5.Luck")
      add=int(input("add attribute : "))
      if add==1 or add==2 or add==3 or add=4 or add==5 :
           if add==1 :
-                print("Your max Health has increased to "+str(exp+...)+" health")
-                print("Your current health also increased also to "+str(exp+Health)+" health")
+          	    Health=Health+10
+                print("Your max Health has increased to "+str(Health)+" health")
+                print("Your current health also increased also to "+str(Health)+" health")
+                return Health
           elif add==2 :
-                print("Your max Attack has increased to "+str(exp+...)+" attack")
-                print("Your current Attack also increased also to "+str(exp+Attack)+" attack")
+          	    Attack=Attack+10
+                print("Your Attack has increased to "+str(Attack)+" attack")
+                return Attack
           elif add==3 :
-                print("Your max Defense has increased to "+str(exp+...)+" Defense")
-                print("Your current Defense also increased also to "+str(exp+Defense)+" Defense")
+          	    Defense=Defense+10
+                print("Your Defense has increased to "+str(Defense)+" Defense")
+                return Defense
           elif add==4 :
-                print("Your max Magic has increased to "+str( exp+...)+" magic")
-                print("Your current health also increased also to "+str(exp+Magic)+" magic")
+          	    Magic=Magic+10
+                print("Your Magic has increased to "+str( Magic)+" magic")
+                return Magic
           else : # add==5
-                print("Your max Luck has increased to "+str( exp+...)+" luck")
-                print("Your current Luck also increased also to "+str(exp+Luck)+" luck")
+                Luck=Luck+10
+                print("Your Luck has increased to "+str(Luck)+" luck")
+                return Luck
      else :
           print("Attribute does not exist")
+          return 0
 
 
 
 
-def Obtain_Gold():
-	print("Lucky,you got "+str(gold)+" gold!")
-	print("Experience "+str(exp+10))
+
 
      
      
