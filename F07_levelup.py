@@ -12,30 +12,30 @@ def Level_Up(currentUser,exp):
                 currentUser[3]=str(currentUser[3])
                 print("Your max Health has increased to "+currentUser[2]+" health")
                 print("Your current health also increased also to "+currentUser[3]+" health")
-                return currentUser[3]
+                return currentUser
           elif add==2 :
           	    currentUser[5]=int(currentUser[5])+10
                 currentUser[5]=str(currentUser[5])
                 print("Your Attack has increased to "+currentUser[5]+" attack")
-                return currentUser[5]
+                return currentUser
           elif add==3 :
           	    currentUser[7]=int(currentUser[7])+10
                 currentUser[7]=str(currentUser[7])
                 print("Your Defense has increased to "+currentUser[7]+" Defense")
-                return currentUser[7]
+                return currentUser
           elif add==4 :
           	    currentUser[6]=int(currentUser[6])+10
                 currentUser[6]=str(currentUser[6])
                 print("Your Magic has increased to "+currentUser[6]+" magic")
-                return currentUser[6]
+                return currentUser
           else : # add==5
                 currentUser[8]=int(currentUser[8])+10
                 currentUser[8]=str(currentUser[8])
                 print("Your Luck has increased to "+currentUser[8]+" luck")
-                return currentUser[8]
+                return currentUser
      else :
           print("Attribute does not exist")
-          return 
+          return currentUser
 
 
 
