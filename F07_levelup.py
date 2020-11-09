@@ -1,4 +1,4 @@
-def Level_Up():
+def Level_Up(currentUser,exp):
      print("You got "+str(exp)+" EXP")
      print("You leveled up!")
      print("Choose what attribute to increase :")
