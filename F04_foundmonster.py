@@ -49,7 +49,7 @@ def fight(monster, currentUser, endfight, quit, newChar, gold):
 
                 if int(monster[4]) <= 0:
                     print(monster[1],"took",currentUser[5],"dmg and health dropped to 0")
-                    gold, currentUser = win(currentUser, gold)
+                    gold, currentUser = win(currentUser, gold, monster)
                     quit = False
                     newChar = False
                     endfight = True
@@ -64,7 +64,7 @@ def fight(monster, currentUser, endfight, quit, newChar, gold):
 
                     elif monsterHP <= 0:
                         print(monster[1],"took",currentUser[5],"dmg and health dropped to 0")
-                        gold, currentUser = win(currentUser,gold)
+                        gold, currentUser = win(currentUser, gold, monster)
                         quit = False
                         newChar = False
                         endfight = True
@@ -90,7 +90,7 @@ def fight(monster, currentUser, endfight, quit, newChar, gold):
 
                 if int(monster[4]) <= 0:
                     print(monster[1],"took",currentUser[6],"dmg and health dropped to 0")
-                    gold, currentUser = win(currentUser, gold)
+                    gold, currentUser = win(currentUser, gold, monster)
                     quit = False
                     newChar = False
                     endfight = True
@@ -105,7 +105,7 @@ def fight(monster, currentUser, endfight, quit, newChar, gold):
 
                     elif monsterHP <= 0:
                         print(monster[1],"took",currentUser[6],"dmg and health dropped to 0")
-                        gold, currentUser = win(currentUser, gold)
+                        gold, currentUser = win(currentUser, gold, monster)
                         quit = False
                         newChar = False
                         endfight = True
@@ -205,13 +205,21 @@ def shieldbroken(currentUser,monster,HP,quit,newChar):
 
             return newChar, quit, currentUser , endfight
 
-def win(currentUser,gold):
-    print("You have won the fight! \nGot 10 gold \nExperience + 50")
-    gold = gold + 10
-    exp  = int(currentUser[9]) + 50
-    currentUser[9] = str(exp)
+def win(currentUser, gold, monster):
+    if monster[1] == "Alduskuy":
+        print("You have won the fight! \nGot 10000 gold \nExperience + 1000")
+        gold = gold + 10000
+        exp  = int(currentUser[9]) + 1000
 
-    return gold, currentUser
+        return gold,currentUser
+    
+    else:
+        print("You have won the fight! \nGot 10 gold \nExperience + 50")
+        gold = gold + 10
+        exp  = int(currentUser[9]) + 50
+        currentUser[9] = str(exp)
+
+        return gold, currentUser
 
 
 
