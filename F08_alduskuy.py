@@ -1,6 +1,8 @@
 from object import final_boss
 from F01_createdragonborn import createdragonborn
 from F12_exitgame import exit
+from F04_foundmonster import fight
+
 
 Alduskuy = final_boss(200, 70, 10000)
 
@@ -25,6 +27,7 @@ def alduskuy():
                 print("2.Magic")
                 print("3.Flee")
                 inp = int(input("$ "))
+                fight()
             else:
                 print("You have won the game!")
                 print("You can create a new character or continue playing")

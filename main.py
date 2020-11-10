@@ -62,6 +62,9 @@ while (not endprogram):
     elif command == "Shopping":
         gold, currentUser = F06_shopping.shop(currentUser, item_data, gold)
 
+    elif command == "fight Alduskuy":
+        F08_alduskuy.alduskuy()
+
     elif command == "Save":
         data = [dragonborn_data, item_data, monster_data, sidequest_data]
         names = ["dragonborn.csv", "item.csv", "monster.csv", "sidequest.csv"]
