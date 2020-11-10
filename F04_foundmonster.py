@@ -1,4 +1,4 @@
-import modules
+import modules, F10_help
 
 def foundmonster(currentUser, monster_data, gold):
     data = []
@@ -110,6 +110,10 @@ def fight(monster, currentUser, endfight, quit, newChar, gold):
                         newChar = False
                         endfight = True
         
+        elif result == "help":
+            section = 1
+            F10_help.help(section)
+
         elif result == "flee":
             quit = False
             newChar = False

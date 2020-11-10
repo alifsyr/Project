@@ -1,14 +1,17 @@
-def helpinmenu():
-    print("Aksi yang dapat dilakukan:")
-    print("-explore")
-    print("-switch city")
-    print("-shopping")
-    print("-save")
-    print("-exit")
-    print("-Alduskuy")
-    print("-admin")
+def help(section):
+    if section == 0:
+        print("Aksi yang dapat dilakukan:")
+        print("- explore")
+        print("- status")
+        print("- switch city")
+        print("- shopping")
+        print("- save")
+        print("- exit")
+        print("- alduskuy")
+        print("- side quest")
     
-def helpinfight():
-    print("-attack")
-    print("-magic")
-    print("-flee")
+    elif section == 1:
+        print("Aksi yang dapat dilakukan:")
+        print("- attack")
+        print("- magic")
+        print("- flee")

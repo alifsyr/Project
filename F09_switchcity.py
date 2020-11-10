@@ -1,28 +1,24 @@
-import random
+import modules
 
-
-def Switch_City(currentUser):
+def switchcity(currentUser, foundmonster):
 	switch_city=[1,2]
-	if random.choice(switch_city)==1:
+	if modules.randomchoice(switch_city) == 1:
 		print("Fast travelling...")
-		if currentUser[10]==1: # City : Windhelm
-			currentUser[10]==0 # Arrive at Solitude
-			print("You have arrived at "+currentUser[10])
-		else :  # City : Solitude
-			currentUser[10]==1 # Arrive at Windhelm
-			print("You have arrived at "+currentUser[10])
-		return currentUser
-	else : # choice(switch_city)==2
+		if currentUser[10] == "1":					# City : Windhelm
+			foundmonster = False
+			currentUser[10]= "0" 					# Arrive at Solitude
+			print("You have arrived at Solitude")
+
+		else :  									# City : Windhelm
+			foundmonster = False
+			currentUser[10]= "1" 					# Arrive at Windhelm
+			print("You have arrived at Windhelm")
+
+		return currentUser, foundmonster
+
+	else : 											# choice(switch_city)==2
 		print("Fast travelling...")
-		print("Oh no you can’t fast travel when enemies are nearby\nYou have met a tundra spider, will you fight or will you flee ( luck * 10% )? ")
-
-
-
-
-
-	
-
-         
-
-
-	
+		print("Oh no you can’t fast travel when enemies are nearby")
+		foundmonster = True
+		
+		return currentUser, foundmonster
