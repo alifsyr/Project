@@ -46,6 +46,7 @@ def fight(monster, currentUser, endfight, quit, newChar, gold):
                     newChar, quit, currentUser, endfight = fightback(monster, currentUser, quit, newChar)
             
             elif int(monster[3]) <= 0:
+
                 if int(monster[4]) <= 0:
                     print(monster[1],"took",currentUser[5],"dmg and health dropped to 0")
                     gold, currentUser = win(currentUser, gold)
@@ -142,11 +143,33 @@ def fightback(monster,currentUser,quit,newChar):
             return newChar, quit, currentUser, endfight
 
     elif int(currentUser[7]) <= 0:
-        HP = int(currentUser[3]) - int(monster[2])
-        currentUser[3] = str(HP)
-        newChar, quit, currentUser, endfight = shieldbroken(currentUser,monster,HP,quit,newChar)
 
-        return newChar, quit, currentUser, endfight
+        if int(currentUser[3]) <= 0:
+            print(monster[1],"strike for "+ str(monster[2]) +" dmg")
+            currentUser[3] = "0"
+            print("Game over!\nYour character is die.\nYou can create a new character or quit game.")
+            result = str(input("$ "))
+
+            if result == "newChar":
+                newChar = True
+                quit = False
+                endfight = True
+
+                return newChar, quit, currentUser , endfight
+
+            elif result == "exit":
+                newChar = False
+                quit = True
+                endfight = True
+
+                return newChar, quit, currentUser , endfight
+
+        elif int(currentUser[3]) > 0:
+            HP = int(currentUser[3]) - int(monster[2])
+            currentUser[3] = str(HP)
+            newChar, quit, currentUser, endfight = shieldbroken(currentUser,monster,HP,quit,newChar)
+
+    return newChar, quit, currentUser, endfight
 
 def shieldbroken(currentUser,monster,HP,quit,newChar):
     if int(currentUser[3]) > 0:
@@ -159,9 +182,11 @@ def shieldbroken(currentUser,monster,HP,quit,newChar):
         return newChar, quit, currentUser, endfight
 
     elif int(currentUser[3]) <= 0:
+        print(monster[1],"strike for "+ str(monster[2]) +" dmg")
         currentUser[3] = "0"
-        print("Game over!\nYou can create a new character or quit game.")
+        print("Game over!\nYour character is die.\nYou can create a new character or quit game.")
         result = str(input("$ "))
+
         if result == "newChar":
             newChar = True
             quit = False
