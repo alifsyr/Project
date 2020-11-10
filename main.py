@@ -1,7 +1,7 @@
 # Tugas Besar IF1210 Dasar pemrograman
 # Kelompok Stormcloak
 
-import F01_createdragonborn, F02_attribute, F03_explore, F04_foundmonster, F05_foundgold, F06_shopping, F11_saveandloadgame, F12_exitgame
+import F01_createdragonborn, F02_attribute, F03_explore, F04_foundmonster, F05_foundgold, F06_shopping, F08_alduskuy, F10_help, F11_saveandloadgame, F12_exitgame
 
 '''
 Zachrandika Alif Syahreza
@@ -62,9 +62,26 @@ while (not endprogram):
     elif command == "Shopping":
         gold, currentUser = F06_shopping.shop(currentUser, item_data, gold)
 
-    elif command == "fight Alduskuy":
-        F08_alduskuy.alduskuy()
+    elif command == "Alduskuy":
+        foundmonster = False
+        foundmonster, monster = F08_alduskuy.alduskuy(foundmonster)
+        if (foundmonster):
+            currentUser, quit, create, gold = F04_foundmonster.foundmonster(currentUser, monster, gold)
+            if (quit):
+                simpan = F12_exitgame.exit()
+                if (simpan):
+                    data = [dragonborn_data, item_data, sidequest_data]
+                    names = ["dragonborn.csv", "item.csv", "sidequest.csv"]
+                    F11_saveandloadgame.save(data, names, currentUser)
 
+                print("Thanks for playing skuyrim, goodbye!")
+                endprogram = True
+            elif (create):
+                dragonborn_data, currentUser = F01_createdragonborn.createdragonborn(dragonborn_data, currentUser)
+
+    elif command == "help":
+        F10_help.help()
+        
     elif command == "Save":
         data = [dragonborn_data, item_data, monster_data, sidequest_data]
         names = ["dragonborn.csv", "item.csv", "monster.csv", "sidequest.csv"]
