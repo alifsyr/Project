@@ -28,7 +28,7 @@ ID,Nama,Attack,Defense,HP
 27,Terathopius Ecaudatus,5,10,50
 28,Cacatua Tenuirostris,10,5,90
 29,Macropus Agilis,15,10,70
-30,Physignathus Cocincinus,10,5,60
+30,Physignathus Cocincinus,10,-95,-35
 31,Paraxerus Cepapi,15,5,100
 32,Varanus Komodensis,25,20,210
 33,Isoodon Obesulus,25,30,210
