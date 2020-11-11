@@ -6,10 +6,10 @@ def switchcity(currentUser, foundmonster):
 		print("Fast travelling...")
 		if currentUser[10] == "1":					# City : Windhelm
 			foundmonster = False
-			currentUser[10]= "0" 					# Arrive at Solitude
+			currentUser[10]= "2" 					# Arrive at Solitude
 			print("You have arrived at Solitude")
 
-		else :  									# City : Windhelm
+		else :  									# City : Solitude
 			foundmonster = False
 			currentUser[10]= "1" 					# Arrive at Windhelm
 			print("You have arrived at Windhelm")
