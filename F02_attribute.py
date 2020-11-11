@@ -1,4 +1,6 @@
 def attribute(currentUser, gold):
+    print("Max HP: "+currentUser[2])
+    print("HP : "+currentUser[3])
     print("Attack : "+currentUser[5])
     print("Magic : "+currentUser[6])
     print("Defense : "+currentUser[7])
