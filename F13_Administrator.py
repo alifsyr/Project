@@ -57,4 +57,8 @@ if password == 'akusukakamu':
                 if i[0] != delete:
                     new_item_arr +=[i]
             item_arr = new_item_arr
-            print(item_arr)
+            item_data = new_item_arr
+        elif command == "save":
+            data = [dragonborn_data, item_data, monster_data, sidequest_data]
+            names = ["dragonborn.csv", "item.csv", "monster.csv", "sidequest.csv"]
+            F11_saveandloadgame.saveadmin(data, names)
