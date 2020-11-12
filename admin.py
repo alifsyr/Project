@@ -9,14 +9,14 @@ while (not endprogram):
         print("Welcome!")
         print("What database do you want to user? (1 - item, 2 - monster)")
         database = int(input("database: ")) #awal lgsg muncul ini
-        printitem(item_data, monster_data, database)
+        printdata(item_data, monster_data, database)
     
         while (not endprogram):
             command = str(input("$ "))
             if command == "switch":
                 print("What database do you want to user? (1 - item, 2 - monster)")
                 database = int(input("database: "))
-                printitem(item_data,monster_data,database)
+                printdata(item_data,monster_data,database)
 
             elif command == "add":
                 item_name = str(input("item name: "))
@@ -65,10 +65,10 @@ def printdata(item_data, monster_data, database):
         for i in item_data: #display data item
             if i[1] != "Nama":
                 data += [i]
-        print(tabulate.tabulate(item,headers = ['ID','Nama','Attack','Magic','Defense','Luck','HP','City','Price']))
+        print(tabulate.tabulate(data,headers = ['ID','Nama','Attack','Magic','Defense','Luck','HP','City','Price']))
     elif database == 2:     #displaymonster
         print("Showing data of all monster:")
         for i in monster_data:
             if i[1]!= 'Nama' or i[2] !='Attack' or i[3] !='Defense' or i[4] != "HP":
                 data += [i]
-        print(tabulate.tabulate(item,headers = ['ID','Nama','Attack','Defense','HP']))
+        print(tabulate.tabulate(data,headers = ['ID','Nama','Attack','Defense','HP']))
