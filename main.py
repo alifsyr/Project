@@ -105,7 +105,7 @@ while (not endprogram):
         
     elif command == "save":
         data = [dragonborn_data, item_data, monster_data, sidequest_data]
-        names = ["dragonborn.csv", "item.csv", "monster.csv", "sidequest.csv"]
+        names = ["dragonborn.csv", "item.csv", "sidequest.csv"]
         F11_saveandloadgame.save(data, names, currentUser)
 
     elif command == "exit":
