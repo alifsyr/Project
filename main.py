@@ -1,7 +1,7 @@
 # Tugas Besar IF1210 Dasar pemrograman
 # Kelompok Stormcloak
 
-import F01_createdragonborn, F02_attribute, F03_explore, F04_foundmonster, F05_foundgold, F06_shopping, F07_levelup, F08_alduskuy, F09_switchcity, F10_help, F11_saveandloadgame, F12_exitgame
+import F01_createdragonborn, F02_attribute, F03_explore, F04_foundmonster, F05_foundgold, F06_shopping, F07_levelup, F08_alduskuy, F09_switchcity, F10_help, F11_saveandloadgame, F12_exitgame,F14_sidequest
 
 '''
 Zachrandika Alif Syahreza
@@ -102,6 +102,9 @@ while (not endprogram):
     elif command == "help":
         section = 0
         F10_help.help(section)
+        
+    elif command == "list sidequest":
+        F14_sidequest.sidequest(sidequest_data,currentUser)
         
     elif command == "save":
         data = [dragonborn_data, item_data, monster_data, sidequest_data]
