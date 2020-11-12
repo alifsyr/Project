@@ -40,8 +40,10 @@ if password == 'akusukakamu':
             item_def = str(input("item deff: "))
             item_luck = str(input("item luck: "))
             item_health = str(input("item health: "))
+            item_magic = str(input("item magic: "))
+            item_gold = str(input("item gold: "))
             item_region = str(input("item region(1 for windhelm, 2 for solitude): "))
-            item_arr += [[len(item_arr),item_name,item_atk,'0',item_def,item_luck,item_health,item_region,'null']] #masukin ke array sementara (magic sm price ga ada di spesifikasi)
+            item_arr += [[len(item_arr),item_name,item_atk,item_magic,item_def,item_luck,item_health,item_region,item_gold]] #masukin ke array sementara (magic sm price ga ada di spesifikasi)
             print("data successfully added to database")
         elif command == "delete":
             for i in item_data: #display data item
@@ -51,7 +53,7 @@ if password == 'akusukakamu':
             for i in item_data:
                 if i[1] != "Nama" or i[2]!="Attack" or i[3]!="Magic" or i[4] != "Defense" or i[5] != "Luck" or i[6] != 'HP' or i[7] != "City" or i[8] != "Price":
                     if i[0] != delete:
-                        print(i[1]+"|"+i[2]+" atk|"+i[4]+" def|"+i[5]+" luck|"+i[6]+" health|"+i[3]+" magic|"+i[7]) #baru di display doang blm dihapus di arraynya
+                        print(i[1]+"|"+i[2]+" atk|"+i[4]+" def|"+i[5]+" luck|"+i[6]+" health|"+i[3]+" magic|"+i[7]+"|"+i[8]+" gold") #baru di display doang blm dihapus di arraynya
             new_item_arr = []
             for i in item_data:
                 if i[0] != delete:
