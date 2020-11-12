@@ -1,9 +1,9 @@
-import csv,F11_saveandloadgame
+import csv,F11_saveandloadgame,F12_exitgame
 dragonborn_data, item_data, monster_data, sidequest_data = F11_saveandloadgame.load()
-item_arr = []
-item_arr += [item_data]
-while True:
-    password = str(input("Enter password: "))
+item_arr = item_data
+endprogram = False
+while (not endprogram):
+    password = (input("Enter password: "))
     if password == 'akusukakamu':
         print("Welcome!")
         print("What database do you want to user? (1 - item, 2 - monster)")
@@ -19,7 +19,7 @@ while True:
                 if i[1]!= 'Nama' or i[2] !='Attack' or i[3] !='Defense' or i[4] != "HP":
                     print(i[1]+"|"+i[2]+" atk"+"|"+i[3]+" def"+"|"+i[4]+" health")
     
-        while True:
+        while (not endprogram):
             command = str(input("$ "))
             if command == "switch":
                 print("What database do you want to user? (1 - item, 2 - monster)")
@@ -44,7 +44,7 @@ while True:
                 item_magic = str(input("item magic: "))
                 item_gold = str(input("item gold: "))
                 item_region = str(input("item region(1 for windhelm, 2 for solitude): "))
-                item_arr += [[len(item_arr),item_name,item_atk,item_magic,item_def,item_luck,item_health,item_region,item_gold]] #masukin ke array sementara (magic sm price ga ada di spesifikasi)
+                item_arr += [[str(len(item_arr)),item_name,item_atk,item_magic,item_def,item_luck,item_health,item_region,item_gold]] #masukin ke array sementara (magic sm price ga ada di spesifikasi)
                 print("data successfully added to database")
             elif command == "delete":
                 for i in item_arr: #display data item
@@ -65,5 +65,12 @@ while True:
                 data = [dragonborn_data, item_data, monster_data, sidequest_data]
                 names = ["dragonborn.csv", "item.csv", "monster.csv", "sidequest.csv"]
                 F11_saveandloadgame.saveadmin(data, names)
+            elif command == "exit":
+                simpan = F12_exitgame.exit()
+                if (simpan):
+                    data = [dragonborn_data, item_data, sidequest_data]
+                    names = ["dragonborn.csv", "item.csv", "sidequest.csv"]
+                    F11_saveandloadgame.saveadmin(data, names)
+                endprogram = True
     else:
         print("Password salah!")
