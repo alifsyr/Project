@@ -1,13 +1,12 @@
 import random
 
-
-class final_boss:
-    def __init__(self, Attack, Defense, BOSS_HP):
+class enemy:
+    def __init__(self, Attack, Defense, E_HP):
         self.Attlow = -30
         self.Atthigh = +70
-        self.MaxHP = BOSS_HP
+        self.MaxHP = E_HP
         self.Def = Defense
-        self.HP = BOSS_HP
+        self.HP = E_HP
 
     def gen_dmg(self):
         return random.randrange(self.Attlow, self.Atthigh)
@@ -20,3 +19,4 @@ class final_boss:
         if ((self.HP) <= 0):
             self.HP = 0
         return self.HP
+
