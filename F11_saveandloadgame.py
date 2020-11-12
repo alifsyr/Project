@@ -42,7 +42,7 @@ def save(data, names, currentUser):
     for i in range(modules.panjang(names)):
         name = str(folderDirectory + names[i])
         writeFile(name, data[i])    
-    print('Your progress on character', str(currentUser[1]), 'has been saved')
+    print('Your progress on character', currentUser[1], 'has been saved')
 
 def saveadmin(data, names):
     import modules
@@ -54,7 +54,6 @@ def saveadmin(data, names):
     print('All changes have been saved')
 
 def writeFile(namaFile, arrayData):
-
     # Membuka file dari hasil input name pada fungsi save dengan fungsi open dan menggunakan metode w untuk menulis
     with open(namaFile, mode='w', newline='') as csvfile:
         writer = csv.writer(csvfile)
