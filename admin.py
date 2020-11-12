@@ -3,7 +3,7 @@ import modules, F11_saveandloadgame, F12_exitgame,tabulate, admin
 dragonborn_data, item_data, monster_data, sidequest_data = F11_saveandloadgame.load()
 endprogram = False
 data = []
-
+new_item_arr=[]
 while (not endprogram):
     data = []
     password = (input("Enter password: "))
@@ -39,7 +39,12 @@ while (not endprogram):
                 for i in data:
                     if i[0] != delete:
                         new_item_arr +=[i]
+                    elif i[0] == delete:
+                        print("Successfully deleted item "+i[1])
                 item_data = new_item_arr
+                data = []
+                modules.printdata(item_data,monster_data,1,data)
+                
 
             elif command == "save":
                 currentUser = ["0","Admin"]
