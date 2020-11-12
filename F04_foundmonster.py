@@ -47,11 +47,11 @@ def fight(monster, currentUser, endfight, quit, newChar, gold):
                     else:
                         monster[3] = "0"
                         print(monster[1]+" took "+ currentUser[5] +" dmg and health dropped to "+ monster[4])
-                        newChar, quit, currentUser, endfight = fightback(monster, currentUser, quit, newChar)
+                        newChar, quit, currentUser, endfight = fightback(monster, currentUser, quit, newChar,endfight)
 
                 else:
                     print(monster[1],"took 0 dmg")
-                    newChar, quit, currentUser, endfight = fightback(monster, currentUser, quit, newChar)
+                    newChar, quit, currentUser, endfight = fightback(monster, currentUser, quit, newChar,endfight)
             
             else:
 
@@ -68,7 +68,7 @@ def fight(monster, currentUser, endfight, quit, newChar, gold):
                     if monsterHP > 0:
                         monster[4] = str(monsterHP)
                         print(monster[1]+" took "+ currentUser[5] +" dmg and health dropped to "+ monster[4])
-                        newChar, quit, currentUser, endfight = fightback(monster, currentUser, quit, newChar)
+                        newChar, quit, currentUser, endfight = fightback(monster, currentUser, quit, newChar,endfight)
 
                     else:
                         print(monster[1],"took",currentUser[5],"dmg and health dropped to 0")
@@ -97,11 +97,11 @@ def fight(monster, currentUser, endfight, quit, newChar, gold):
                     else:
                         monster[3] = "0"
                         print(monster[1]+" took "+ currentUser[6] +" dmg and health dropped to "+ monster[4])
-                        newChar, quit, currentUser, endfight = fightback(monster, currentUser, quit, newChar)
+                        newChar, quit, currentUser, endfight = fightback(monster, currentUser, quit, newChar,endfight)
 
                 else:
                     print(monster[1],"took 0 dmg")
-                    newChar, quit, currentUser, endfight = fightback(monster, currentUser, quit, newChar)
+                    newChar, quit, currentUser, endfight = fightback(monster, currentUser, quit, newChar,endfight)
             
             else:
 
@@ -118,7 +118,7 @@ def fight(monster, currentUser, endfight, quit, newChar, gold):
                     if monsterHP > 0:
                         monster[4] = str(monsterHP)
                         print(monster[1]+" took "+ currentUser[6] +" dmg and health dropped to "+ monster[4])
-                        newChar, quit, currentUser, endfight = fightback(monster, currentUser, quit, newChar)
+                        newChar, quit, currentUser, endfight = fightback(monster, currentUser, quit, newChar,endfight)
 
                     else:
                         print(monster[1],"took",currentUser[6],"dmg and health dropped to 0")
@@ -138,7 +138,7 @@ def fight(monster, currentUser, endfight, quit, newChar, gold):
 
     return currentUser , quit, newChar , gold
 
-def fightback(monster,currentUser,quit,newChar):
+def fightback(monster,currentUser,quit,newChar,endfight):
     if int(currentUser[7]) > 0:
         dmg = int(currentUser[7]) - int(monster[2])
         currentUser[7] = str(dmg)
@@ -153,7 +153,7 @@ def fightback(monster,currentUser,quit,newChar):
                 print("Game over!\nYour character is die.\nYou can create a new character or quit game.")
                 result = str(input("$ "))
 
-                if result == "newChar":
+                if result == "create":
                     newChar = True
                     quit = False
                     endfight = True
@@ -192,7 +192,7 @@ def fightback(monster,currentUser,quit,newChar):
             print("Game over!\nYour character is die.\nYou can create a new character or quit game.")
             result = str(input("$ "))
 
-            if result == "newChar":
+            if result == "create":
                 newChar = True
                 quit = False
                 endfight = True
@@ -229,7 +229,7 @@ def shieldbroken(currentUser,monster,HP,quit,newChar):
         print("Game over!\nYour character is die.\nYou can create a new character or quit game.")
         result = str(input("$ "))
 
-        if result == "newChar":
+        if result == "create":
             newChar = True
             quit = False
             endfight = True

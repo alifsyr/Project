@@ -6,10 +6,10 @@ ID,Nama,Attack,Defense,HP
 5,Cochlearius Cochlearius,5,15,50
 6,Babi Hutan,15,5,90
 7,Francolinus Swainsonii,10,15,90
-8,Oryx Gazella Callotis,15,15,90
+8,Oryx Gazella Callotis,15,-95,-5
 9,Thalasseus Maximus,10,15,60
 10,Tockus Erythrorhyncus,5,5,80
-11,Martes Americana,10,5,60
+11,Martes Americana,10,-95,-35
 12,Cynomys Ludovicianus,10,5,50
 13,Cacatua Tenuirostris,10,15,100
 14,Mycteria Ibis,5,5,90
