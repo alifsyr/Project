@@ -44,6 +44,14 @@ def save(data, names, currentUser):
         writeFile(name, data[i])    
     print('Your progress on character', str(currentUser[1]), 'has been saved')
 
+def saveadmin(data, names):
+    import modules
+    folderDirectory = "data/"
+    # Melakukan looping berdasarkan panjang array names
+    for i in range(modules.panjang(names)):
+        name = str(folderDirectory + names[i])
+        writeFile(name, data[i])    
+    print('All changes have been saved')
 
 def writeFile(namaFile, arrayData):
 

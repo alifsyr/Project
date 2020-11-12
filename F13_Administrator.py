@@ -2,6 +2,7 @@ import csv,F11_saveandloadgame
 dragonborn_data, item_data, monster_data, sidequest_data = F11_saveandloadgame.load()
 item_arr = []
 item_arr += [item_data]
+del = 0
 password = str(input("Enter password: "))
 if password == 'akusukakamu':
     print("Welcome!")
