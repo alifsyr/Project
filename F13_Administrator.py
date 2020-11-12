@@ -62,3 +62,5 @@ if password == 'akusukakamu':
             data = [dragonborn_data, item_data, monster_data, sidequest_data]
             names = ["dragonborn.csv", "item.csv", "monster.csv", "sidequest.csv"]
             F11_saveandloadgame.saveadmin(data, names)
+else:
+    print("Password salah!")
