@@ -1,9 +1,7 @@
-import csv,F11_saveandloadgame,F12_exitgame,tabulate
+import modules, F11_saveandloadgame, F12_exitgame,tabulate
 
 
 dragonborn_data, item_data, monster_data, sidequest_data = F11_saveandloadgame.load()
-item_arr = item_data
-item = []
 endprogram = False
 while (not endprogram):
     password = (input("Enter password: "))
@@ -11,34 +9,14 @@ while (not endprogram):
         print("Welcome!")
         print("What database do you want to user? (1 - item, 2 - monster)")
         database = int(input("database: ")) #awal lgsg muncul ini
-        if database == 1:
-            print("Showing data of all item:")
-            for i in item_arr: #display data item
-                if i[1] != "Nama":
-                    item += [i]
-            print(tabulate.tabulate(item,headers = ['ID','Nama','Attack','Magic','Defense','Luck','HP','City','Price']))
-        elif database == 2: #display monster
-            print("Showing data of all monster:")
-            for i in monster_data:
-                if i[1]!= 'Nama' or i[2] !='Attack' or i[3] !='Defense' or i[4] != "HP":
-                    item += [i]
-            print(tabulate.tabulate(item,headers = ['ID','Nama','Attack','Defense','HP']))
+        printitem(item_data, monster_data, database)
     
         while (not endprogram):
             command = str(input("$ "))
             if command == "switch":
                 print("What database do you want to user? (1 - item, 2 - monster)")
                 database = int(input("database: "))
-                if database == 1:
-                    print("Showing data of all item:")
-                    for i in item_arr:
-                        if i[1] != "Nama" or i[2]!="Attack" or i[3]!="Magic" or i[4] != "Defense" or i[5] != "Luck" or i[6] != 'HP' or i[7] != "City" or i[8] != "Price":
-                            print(i[1]+"|"+i[2]+" atk"+"|"+i[4]+" def"+"|"+i[5]+" luck"+"|"+i[6]+" health"+"|"+i[3]+" magic"+"|"+i[7]+"|"+i[8]+" gold")
-                elif database == 2:
-                    print("Showing data of all monster:")
-                    for i in monster_data:
-                        if i[1]!= 'Nama' or i[2] !='Attack' or i[3] !='Defense' or i[4] != "HP":
-                            print(i[1]+"|"+i[2]+" atk"+"|"+i[3]+" def"+"|"+i[4]+" health")
+                printitem(item_data,monster_data,database)
 
             elif command == "add":
                 item_name = str(input("item name: "))
@@ -49,7 +27,7 @@ while (not endprogram):
                 item_magic = str(input("item magic: "))
                 item_gold = str(input("item gold: "))
                 item_region = str(input("item region(1 for windhelm, 2 for solitude): "))
-                item_arr += [[str(len(item_arr)),item_name,item_atk,item_magic,item_def,item_luck,item_health,item_region,item_gold]] #masukin ke array sementara (magic sm price ga ada di spesifikasi)
+                item_data += [[str(modules.generateid(item_data)),item_name,item_atk,item_magic,item_def,item_luck,item_health,item_region,item_gold]] #masukin ke array sementara (magic sm price ga ada di spesifikasi)
                 print("data successfully added to database")
             elif command == "delete":
                 for i in item_arr: #display data item
@@ -79,3 +57,18 @@ while (not endprogram):
                 endprogram = True
     else:
         print("Password salah!")
+
+def printdata(item_data, monster_data, database):
+    data = []
+    if database == 1:
+        print("Showing data of all item:")
+        for i in item_data: #display data item
+            if i[1] != "Nama":
+                data += [i]
+        print(tabulate.tabulate(item,headers = ['ID','Nama','Attack','Magic','Defense','Luck','HP','City','Price']))
+    elif database == 2:     #displaymonster
+        print("Showing data of all monster:")
+        for i in monster_data:
+            if i[1]!= 'Nama' or i[2] !='Attack' or i[3] !='Defense' or i[4] != "HP":
+                data += [i]
+        print(tabulate.tabulate(item,headers = ['ID','Nama','Attack','Defense','HP']))

@@ -1,3 +1,5 @@
+import modules
+
 def createdragonborn(dragonborn_data,currentUser):
     nama = str(input("Masukan nama character: \n$ ")).capitalize()
     print(nama,"created")
@@ -8,7 +10,7 @@ def createdragonborn(dragonborn_data,currentUser):
     if result == 1:
         print("Choose one city: \n1. Windhelm \n2. solitude")
         city = choosecity(int(input("Masukkan nomor city diatas(1/2): \n$ ")))
-        newchar = [str(generateid(dragonborn_data)),nama,'100','100','1','6','5','5','0','0',str(city),'null']
+        newchar = [str(modules.generateid(dragonborn_data)),nama,'100','100','1','6','5','5','0','0',str(city),'null']
         dragonborn_data += [newchar]
         currentUser = newchar
 
@@ -17,7 +19,7 @@ def createdragonborn(dragonborn_data,currentUser):
     elif result == 2:
         print("Choose one city: \n1. Windhelm \n2. solitude")
         city = choosecity(int(input("Masukkan nomor city diatas(1/2): \n$ ")))
-        newchar = [str(generateid(dragonborn_data)),nama,'100','100','1','5','6','5','0','0',str(city),'null']
+        newchar = [str(modules.generateid(dragonborn_data)),nama,'100','100','1','5','6','5','0','0',str(city),'null']
         dragonborn_data += [newchar]
         currentUser = newchar
 
@@ -29,12 +31,3 @@ def choosecity(x):
     
     elif x == 2:
         return x
-
-def generateid(dragonborn_data):
-    for i in (dragonborn_data):
-        if i[0] != "ID":
-            maks = 0
-            if int(i[0]) > maks:
-                maks = int(i[0])
-    ID = maks + 1
-    return ID

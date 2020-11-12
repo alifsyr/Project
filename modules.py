@@ -27,6 +27,15 @@ def randomrange(x):
     choice = random.randrange(x)
     return choice
 
+def generateid(x):
+    for i in (x):
+        if i[0] != "ID":
+            maks = 0
+            if int(i[0]) > maks:
+                maks = int(i[0])
+    ID = maks + 1
+    return ID
+
 def strSort(database, column, order):
     for i in range(panjang(database)):
         # Mengurutkan data berdasarkan kolom berisi integer
