@@ -56,5 +56,5 @@ if password == 'akusukakamu':
             for i in item_data:
                 if i[0] != delete:
                     new_item_arr +=[i]
-                    print(i)
             item_arr = new_item_arr
+            print(item_arr)
