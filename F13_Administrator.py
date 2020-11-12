@@ -2,7 +2,6 @@ import csv,F11_saveandloadgame
 dragonborn_data, item_data, monster_data, sidequest_data = F11_saveandloadgame.load()
 item_arr = []
 item_arr += [item_data]
-del = 0
 password = str(input("Enter password: "))
 if password == 'akusukakamu':
     print("Welcome!")
@@ -48,8 +47,14 @@ if password == 'akusukakamu':
             for i in item_data: #display data item
                 if i[1] != "Nama" or i[2]!="Attack" or i[3]!="Magic" or i[4] != "Defense" or i[5] != "Luck" or i[6] != 'HP' or i[7] != "City" or i[8] != "Price":
                     print(i[0]+". "+i[1]+"|"+i[2]+" atk|"+i[4]+" def|"+i[5]+" luck|"+i[6]+" health|"+i[3]+" magic|"+i[7]+"|"+i[8]+" gold")
-            del = input("Which number: ")
+            delete = input("Which number: ")
             for i in item_data:
                 if i[1] != "Nama" or i[2]!="Attack" or i[3]!="Magic" or i[4] != "Defense" or i[5] != "Luck" or i[6] != 'HP' or i[7] != "City" or i[8] != "Price":
-                    if i[0] != del:
+                    if i[0] != delete:
                         print(i[1]+"|"+i[2]+" atk|"+i[4]+" def|"+i[5]+" luck|"+i[6]+" health|"+i[3]+" magic|"+i[7]) #baru di display doang blm dihapus di arraynya
+            new_item_arr = []
+            for i in item_data:
+                if i[0] != delete:
+                    new_item_arr +=[i]
+                    print(i)
+            item_arr = new_item_arr
