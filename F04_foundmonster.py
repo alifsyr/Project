@@ -273,6 +273,3 @@ def win(currentUser, monster):
         currentUser[12] = str(gold)
 
         return currentUser
-
-
-

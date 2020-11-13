@@ -21,7 +21,7 @@ Muhammad Farhan
 '''
 
 endprogram  = False
-currentUser = [" $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER"]
+currentUser = [" $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER"]
 
 print("Welcome to Skuyrim")
 dragonborn_data, item_data, monster_data, sidequest_data = F11_saveandloadgame.load()
