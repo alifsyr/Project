@@ -80,9 +80,15 @@ def upgrade(item,currentUser,inp):
 
                 elif i[3] == 'luck':
                     upgrade = int(currentUser[8]) + int(i[2])
-                    currentUser[8] = str(upgrade)
+                    if upgrade > 400:
+                        print("Your luck attribute is already in maximum level")
+                        currentUser[8] = "400"
 
-                    return currentUser
+                        return currentUser
+                    else:
+                        currentUser[8] = str(upgrade)
+
+                        return currentUser
                 
                 elif i[3] == 'HP':
                     upgrade = int(currentUser[3]) + int(i[2])
