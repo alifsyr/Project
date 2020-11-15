@@ -1,7 +1,10 @@
 import modules
 
 def explore(currentUser):
-    explore = ["monster","gold"]
-    result = modules.randomchoice(explore)
-
-    return result
+    result = modules.randomrange(501)
+    if result >= (500 - int(currentUser[8])):
+        gold = True
+        return  gold
+    else:
+        gold = False
+        return gold

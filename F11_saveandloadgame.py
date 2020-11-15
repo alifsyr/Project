@@ -3,11 +3,14 @@ import csv
 def load():
     dragonborn_data = loadfile("data/dragonborn.csv")
     item_data       = loadfile("data/item.csv")
-    monster_data    = loadfile("data/monster.csv")
     sidequest_data  = loadfile("data/sidequest.csv")
 
-    return dragonborn_data, item_data, monster_data, sidequest_data
+    return dragonborn_data, item_data, sidequest_data
 
+def loadmonster():
+    monster_data    = loadfile("data/monster.csv")
+
+    return monster_data
 
 def loadfile(x):
     with open(x) as csvfile:
@@ -16,9 +19,8 @@ def loadfile(x):
 
     return data
 
-
 def dataload(dragonborn_data, currentUser):
-    dummy = [" $NOUSER", "$NOUSER", " $NOUSER", " $NOUSER", " $NOUSER"," $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER"]
+    dummy = [" $NOUSER", "$NOUSER", " $NOUSER", " $NOUSER", " $NOUSER"" $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER"]
     for i in (dragonborn_data):
         if i[1] != 'Nama':
             print(str(i[1])+" - lvl "+i[4])
@@ -34,7 +36,6 @@ def dataload(dragonborn_data, currentUser):
         newChar = True
         return newChar, dummy
 
-
 def save(data, names, currentUser):
     import modules
     folderDirectory = "data/"
@@ -42,11 +43,18 @@ def save(data, names, currentUser):
     for i in range(modules.panjang(names)):
         name = str(folderDirectory + names[i])
         writeFile(name, data[i])    
-    print('Your progress on character', str(currentUser[1]), 'has been saved')
+    print('Your progress on character', currentUser[1], 'has been saved')
 
+def saveadmin(data, names):
+    import modules
+    folderDirectory = "data/"
+    # Melakukan looping berdasarkan panjang array names
+    for i in range(modules.panjang(names)):
+        name = str(folderDirectory + names[i])
+        writeFile(name, data[i])    
+    print('All changes have been saved')
 
 def writeFile(namaFile, arrayData):
-
     # Membuka file dari hasil input name pada fungsi save dengan fungsi open dan menggunakan metode w untuk menulis
     with open(namaFile, mode='w', newline='') as csvfile:
         writer = csv.writer(csvfile)
