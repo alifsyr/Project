@@ -1,8 +1,8 @@
 import modules
 
 def switchcity(currentUser, foundmonster):
-	switch_city=[1,2]
-	if modules.randomchoice(switch_city) == 1:
+	result = modules.randomrange(501)
+	if result >= (500 - int(currentUser[8])):
 		print("Fast travelling...")
 		if currentUser[10] == "1":					# City : Windhelm
 			foundmonster = False
