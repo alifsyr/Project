@@ -24,7 +24,7 @@ endprogram  = False
 currentUser = [" $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER"]
 
 print("Welcome to Skuyrim")
-dragonborn_data, item_data, monster_data, sidequest_data = F11_saveandloadgame.load()
+dragonborn_data, item_data, sidequest_data = F11_saveandloadgame.load()
 
 print("Choose your character or create new character :")
 newChar, currentUser = F11_saveandloadgame.dataload (dragonborn_data, currentUser)
@@ -32,6 +32,8 @@ if (newChar):
     dragonborn_data, currentUser = F01_createdragonborn.createdragonborn(dragonborn_data, currentUser)
 
 while (not endprogram):
+    monster_data = F11_saveandloadgame.loadmonster()
+
     increaselevel = int(currentUser[9]) // 100
     if increaselevel > int(currentUser[4]):
         currentUser = F07_levelup.levelup(currentUser, increaselevel)
