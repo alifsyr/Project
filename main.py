@@ -21,8 +21,7 @@ Muhammad Farhan
 '''
 
 endprogram  = False
-gold        = 100
-currentUser = [" $NOUSER", "$NOUSER", " $NOUSER", " $NOUSER", " $NOUSER"" $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER"]
+currentUser = [" $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER"]
 
 print("Welcome to Skuyrim")
 dragonborn_data, item_data, monster_data, sidequest_data = F11_saveandloadgame.load()
@@ -40,15 +39,15 @@ while (not endprogram):
     command = str(input("$ "))
 
     if   command == "status":
-        F02_attribute.attribute(currentUser, gold)
+        F02_attribute.attribute(currentUser)
 
     elif command == "explore":
         result = F03_explore.explore(currentUser)
-        if (result == "gold"):
-            gold, currentUser = F05_foundgold.foundgold(currentUser, gold)
+        if (result):
+            currentUser = F05_foundgold.foundgold(currentUser)
 
         else:
-            currentUser, quit, create, gold = F04_foundmonster.foundmonster(currentUser, monster_data, gold)
+            currentUser, quit, create= F04_foundmonster.foundmonster(currentUser, monster_data)
             if (quit):
                 simpan = F12_exitgame.exit()
                 if (simpan):
@@ -62,13 +61,13 @@ while (not endprogram):
                 dragonborn_data, currentUser = F01_createdragonborn.createdragonborn(dragonborn_data, currentUser)
 
     elif command == "shopping":
-        gold, currentUser = F06_shopping.shop(currentUser, item_data, gold)
+        currentUser = F06_shopping.shop(currentUser, item_data)
 
     elif command == "alduskuy":
         foundmonster = False
         foundmonster, monster = F08_alduskuy.alduskuy(foundmonster)
         if (foundmonster):
-            currentUser, quit, create, gold = F04_foundmonster.foundmonster(currentUser, monster, gold)
+            currentUser, quit, create = F04_foundmonster.foundmonster(currentUser, monster)
             if (quit):
                 simpan = F12_exitgame.exit()
                 if (simpan):
@@ -86,7 +85,7 @@ while (not endprogram):
         foundmonster = False
         currentUser, foundmonster = F09_switchcity.switchcity(currentUser, foundmonster)
         if(foundmonster):
-            currentUser, quit, create, gold = F04_foundmonster.foundmonster(currentUser, monster_data, gold)
+            currentUser, quit, create = F04_foundmonster.foundmonster(currentUser, monster_data)
             if (quit):
                 simpan = F12_exitgame.exit()
                 if (simpan):
@@ -107,7 +106,7 @@ while (not endprogram):
         F14_sidequest.sidequest(sidequest_data,currentUser)
         
     elif command == "save":
-        data = [dragonborn_data, item_data, monster_data, sidequest_data]
+        data = [dragonborn_data, item_data, sidequest_data]
         names = ["dragonborn.csv", "item.csv", "sidequest.csv"]
         F11_saveandloadgame.save(data, names, currentUser)
 

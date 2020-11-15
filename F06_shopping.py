@@ -1,62 +1,61 @@
-
-def shop(currentUser, item_data, n):
+def shop(currentUser, item_data):
     exit = False
-    gold = n 
     while (not exit):
         print("Everything's for sale my friend. Everything. If I had a sister, I'd sell her in a second")
         print("For sale:")
-        item = [["ID", "Nama", "Besar", "Tipe", "Gold"]]
-        item = printitem(item_data,currentUser,item)
+        item = []
+        item = listdata(item_data,currentUser,item)
+        print("{:<8} {:<30} {:<8} {:<8} {:<8}".format('No','Item Name','Value','Type','Price'))
+        for i in item:
+            No,Item,Value,Type,Price = i
+            print("{:<8} {:<30} {:<8} {:<8} {:<8}".format(No,Item,"+"+Value,Type,Price))
         print("99.exit")
-        gold, exit, currentUser = buy(gold, item, currentUser, exit)
+        exit, currentUser = buy(item, currentUser, exit)
 
-    return gold, currentUser
+    return currentUser
 
-def buy(gold, item, currentUser, exit):
-    print("You have", gold, "gold")
+def buy(item, currentUser, exit):
+    print("You have", currentUser[12], "gold")
     inp = int(input("buy: "))
     for i in item:
         if(i[0] != "ID"):
             if (inp == int(i[0])):
-                gold = gold - (int(i[4]))
+                gold = int(currentUser[12]) - int(i[4])
+                currentUser[12] = str(gold)
 
                 if gold <= 0 :
-                    gold = gold + int(i[4])
+                    gold = int(currentUser[12]) + int(i[4])
+                    currentUser[12] = str(gold)
                     print("You gold are not enough")
 
                 elif gold > 0:
                     print("item", i[1], "has been bought add",i[2], i[3],"to player")
                     currentUser = upgrade(item,currentUser,inp)
-                    print("your current gold is", gold)
+                    print("your current gold is", currentUser[12])
 
             elif (inp == 99):
                 exit = True
 
-    return gold, exit, currentUser
+    return exit, currentUser
 
-def printitem(item_data, currentUser,item):
+def listdata(item_data, currentUser,item):
     num = 1
     for i in item_data:
         if(i[0] != "ID"):
             if(i[7] == currentUser[10]):
                 if (int(i[3]) == 0 and int(i[4]) == 0 and int(i[5]) == 0 and int(i[6]) == 0):
-                    print(str(num), i[1], "+" + i[2], "atk", "(" + i[8], "gold)")
                     item = item + [[str(num), i[1], i[2], "attack", i[8]]]
 
                 elif (int(i[2]) == 0 and int(i[4]) == 0 and int(i[5]) == 0 and int(i[6]) == 0):
-                    print(str(num), i[1], "+" + i[3], "mgc", "(" + i[8], "gold)")
                     item = item + [[str(num), i[1], i[3], "magic", i[8]]]
 
                 elif (int(i[3]) == 0 and int(i[2]) == 0 and int(i[5]) == 0 and int(i[6]) == 0):
-                    print(str(num), i[1], "+" + i[4], "def", "(" + i[8], "gold)")
                     item = item + [[str(num), i[1], i[4], "defense", i[8]]]
 
                 elif (int(i[3]) == 0 and int(i[4]) == 0 and int(i[2]) == 0 and int(i[6]) == 0):
-                    print(str(num), i[1], "+" + i[5], "luck", "("+i[8], "gold)")
                     item = item + [[str(num), i[1], i[5], "luck", i[8]]]
 
                 elif (int(i[3]) == 0 and int(i[4]) == 0 and int(i[5]) == 0 and int(i[2]) == 0):
-                    print(str(num), i[1], "+" + i[6], "HP", "("+i[8], "gold)")
                     item = item + [[str(num), i[1], i[6], "HP", i[8]]]
 
                 num += 1
@@ -81,9 +80,15 @@ def upgrade(item,currentUser,inp):
 
                 elif i[3] == 'luck':
                     upgrade = int(currentUser[8]) + int(i[2])
-                    currentUser[8] = str(upgrade)
+                    if upgrade > 400:
+                        print("Your luck attribute is already in maximum level")
+                        currentUser[8] = "400"
 
-                    return currentUser
+                        return currentUser
+                    else:
+                        currentUser[8] = str(upgrade)
+
+                        return currentUser
                 
                 elif i[3] == 'HP':
                     upgrade = int(currentUser[3]) + int(i[2])
