@@ -32,9 +32,9 @@ if (newChar):
     dragonborn_data, currentUser = F01_createdragonborn.createdragonborn(dragonborn_data, currentUser)
 
 while (not endprogram):
-    levelup = int(currentUser[9]) // 100
-    if levelup > int(currentUser[4]):
-        currentUser = F07_levelup.levelup(currentUser, levelup)
+    increaselevel = int(currentUser[9]) // 100
+    if increaselevel > int(currentUser[4]):
+        currentUser = F07_levelup.levelup(currentUser, increaselevel)
 
     command = str(input("$ "))
 
@@ -47,7 +47,7 @@ while (not endprogram):
             currentUser = F05_foundgold.foundgold(currentUser)
 
         else:
-            currentUser, quit, create= F04_foundmonster.foundmonster(currentUser, monster_data)
+            currentUser, quit, create = F04_foundmonster.foundmonster(currentUser, monster_data)
             if (quit):
                 simpan = F12_exitgame.exit()
                 if (simpan):
