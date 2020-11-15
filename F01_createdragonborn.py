@@ -10,7 +10,7 @@ def createdragonborn(dragonborn_data,currentUser):
     if result == 1:
         print("Choose one city: \n1. Windhelm \n2. solitude")
         city = choosecity(int(input("Masukkan nomor city diatas(1/2): \n$ ")))
-        newchar = [str(modules.generateid(dragonborn_data)),nama,'100','100','1','6','5','5','0','0',str(city),'1','100','1']
+        newchar = [str(modules.generateid(dragonborn_data)),nama,'100','100','1','6','5','5','0','0',str(city),'null']
         dragonborn_data += [newchar]
         currentUser = newchar
 
@@ -19,7 +19,7 @@ def createdragonborn(dragonborn_data,currentUser):
     elif result == 2:
         print("Choose one city: \n1. Windhelm \n2. solitude")
         city = choosecity(int(input("Masukkan nomor city diatas(1/2): \n$ ")))
-        newchar = [str(modules.generateid(dragonborn_data)),nama,'100','100','1','5','6','5','0','0',str(city),'1','100','1']
+        newchar = [str(modules.generateid(dragonborn_data)),nama,'100','100','1','5','6','5','0','0',str(city),'null']
         dragonborn_data += [newchar]
         currentUser = newchar
 

@@ -1,4 +1,4 @@
-import modules, F11_saveandloadgame, F12_exitgame
+import modules, F11_saveandloadgame, F12_exitgame,tabulate, admin
 
 dragonborn_data, item_data, monster_data, sidequest_data = F11_saveandloadgame.load()
 endprogram = False
@@ -36,13 +36,12 @@ while (not endprogram):
             elif command == "delete":
                 data = modules.printdata(item_data, monster_data, 1, data)
                 delete = input("Which number: ")
-                update_arr = [['ID','Nama','Attack','Magic','Defense','Luck','HP','City','Price']]
                 for i in data:
                     if i[0] != delete:
-                        update_arr +=[i]
+                        new_item_arr +=[i]
                     elif i[0] == delete:
                         print("Successfully deleted item "+i[1])
-                item_data = update_arr
+                item_data = new_item_arr
                 data = []
                 modules.printdata(item_data,monster_data,1,data)
                 

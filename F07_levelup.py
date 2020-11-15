@@ -42,13 +42,7 @@ def upgrade(currentUser,attribute):
                         return currentUser
 
                   elif i[1] == 'Luck':
-                        upgrade = int(currentUser[8]) + int(i[2])
-                        if upgrade > 400:
-                              print("Your luck attribute is already in maximum level")
-                              currentUser[8] = "400"
+                        upgrade = int(currentUser[8]) + int(i(2))
+                        currentUser[8] = str(upgrade)
 
-                              return currentUser
-                        else:
-                              currentUser[8] = str(upgrade)
-
-                              return currentUser
+                        return currentUser
