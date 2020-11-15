@@ -1,5 +1,5 @@
 import modules, F10_help
-
+from random import choice 
 def foundmonster(currentUser, monster_data, gold):
     data = []
     for i in monster_data:
@@ -19,8 +19,15 @@ def foundmonster(currentUser, monster_data, gold):
         return currentUser, quit ,newChar, gold
 
     elif result == "flee":
-        quit = False
-        newChar = False
+        poss = [1,2,3]
+        if choice(poss) == 1:
+            quit = False
+            newChar = False
+            currentUser[8] += 1
+       
+        elif currentUser [8] >= 10 :
+            quit = False
+            newChar = False
 
         return currentUser, quit, newChar, gold
 
