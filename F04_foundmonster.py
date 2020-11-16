@@ -255,14 +255,14 @@ def win(currentUser, monster):
             quit = False
             endfight = True
 
-            return newChar, quit, currentUser , endfight
+            return currentUser, newChar, quit, endfight
 
         elif result == "exit":
             newChar = False
             quit = True
             endfight = True
 
-            return newChar, quit, currentUser , endfight
+            return currentUser, newChar, quit, endfight
 
     else:
         print("You have won the fight! \nGot 10 gold \nExperience + 50")
