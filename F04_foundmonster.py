@@ -45,10 +45,7 @@ def fight(monster, currentUser, endfight, quit, newChar):
                     monster[4] = str(HP)
                     if int(monster[4]) <= 0:
                         print(monster[1],"took",currentUser[5],"dmg and health dropped to 0")
-                        currentUser = win(currentUser, monster)
-                        quit = False
-                        newChar = False
-                        endfight = True
+                        currentUser, newChar, quit, endfight = win(currentUser, monster)
 
                     else:
                         monster[3] = "0"
@@ -78,10 +75,7 @@ def fight(monster, currentUser, endfight, quit, newChar):
 
                     else:
                         print(monster[1],"took",currentUser[5],"dmg and health dropped to 0")
-                        currentUser = win(currentUser, monster)
-                        quit = False
-                        newChar = False
-                        endfight = True
+                        currentUser, newChar, quit, endfight = win(currentUser, monster)
         
         elif result == "magic":
 
@@ -95,10 +89,7 @@ def fight(monster, currentUser, endfight, quit, newChar):
                     monster[4] = str(HP)
                     if int(monster[4]) <= 0:
                         print(monster[1],"took",currentUser[6],"dmg and health dropped to 0")
-                        currentUser = win(currentUser, monster)
-                        quit = False
-                        newChar = False
-                        endfight = True
+                        currentUser, newChar, quit, endfight = win(currentUser, monster)
 
                     else:
                         monster[3] = "0"
@@ -113,10 +104,7 @@ def fight(monster, currentUser, endfight, quit, newChar):
 
                 if int(monster[4]) <= 0:
                     print(monster[1],"took",currentUser[6],"dmg and health dropped to 0")
-                    currentUser = win(currentUser, monster)
-                    quit = False
-                    newChar = False
-                    endfight = True
+                    currentUser, newChar, quit, endfight = win(currentUser, monster)
 
                 else:
                     monsterHP = int(monster[4]) - int(currentUser[6])
@@ -128,10 +116,7 @@ def fight(monster, currentUser, endfight, quit, newChar):
 
                     else:
                         print(monster[1],"took",currentUser[6],"dmg and health dropped to 0")
-                        currentUser = win(currentUser, monster)
-                        quit = False
-                        newChar = False
-                        endfight = True
+                        currentUser, newChar, quit, endfight = win(currentUser, monster)
         
         elif result == "help":
             section = 1
@@ -262,17 +247,34 @@ def win(currentUser, monster):
         exp  = int(currentUser[9]) + 1000
         currentUser[12] = str(gold)
         currentUser[9] = str(exp)
+        print("Do you want to create a new character or exit?")
+        result = str(input("$ "))
 
-        return currentUser
-    
+        if result == "create":
+            newChar = True
+            quit = False
+            endfight = True
+
+            return currentUser, newChar, quit, endfight
+
+        elif result == "exit":
+            newChar = False
+            quit = True
+            endfight = True
+
+            return currentUser, newChar, quit, endfight
+
     else:
         print("You have won the fight! \nGot 10 gold \nExperience + 50")
         gold = int(currentUser[12]) + 10
         exp  = int(currentUser[9]) + 50
         currentUser[9] = str(exp)
         currentUser[12] = str(gold)
+        newChar = False
+        quit = False
+        endfight = True
 
-        return currentUser
+        return currentUser, newChar, quit, endfight
 
 
 

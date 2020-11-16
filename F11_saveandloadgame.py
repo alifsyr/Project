@@ -20,7 +20,7 @@ def loadfile(x):
     return data
 
 def dataload(dragonborn_data, currentUser):
-    dummy = [" $NOUSER", "$NOUSER", " $NOUSER", " $NOUSER", " $NOUSER"" $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER"]
+    dummy = [" $NOUSER", "$NOUSER", " $NOUSER", " $NOUSER", " $NOUSER"," $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER"]
     for i in (dragonborn_data):
         if i[1] != 'Nama':
             print(str(i[1])+" - lvl "+i[4])
@@ -43,16 +43,7 @@ def save(data, names, currentUser):
     for i in range(modules.panjang(names)):
         name = str(folderDirectory + names[i])
         writeFile(name, data[i])    
-    print('Your progress on character', currentUser[1], 'has been saved')
-
-def saveadmin(data, names):
-    import modules
-    folderDirectory = "data/"
-    # Melakukan looping berdasarkan panjang array names
-    for i in range(modules.panjang(names)):
-        name = str(folderDirectory + names[i])
-        writeFile(name, data[i])    
-    print('All changes have been saved')
+    print("Your progress on character", currentUser[1], "has been saved")
 
 def writeFile(namaFile, arrayData):
     # Membuka file dari hasil input name pada fungsi save dengan fungsi open dan menggunakan metode w untuk menulis

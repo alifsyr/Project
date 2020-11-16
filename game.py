@@ -76,8 +76,6 @@ while (not endprogram):
                     data = [dragonborn_data, item_data, sidequest_data]
                     names = ["dragonborn.csv", "item.csv", "sidequest.csv"]
                     F11_saveandloadgame.save(data, names, currentUser)
-                print("Thanks for playing skuyrim, goodbye!")
-                endprogram = True
 
             elif (create):
                 dragonborn_data, currentUser = F01_createdragonborn.createdragonborn(dragonborn_data, currentUser)
@@ -105,8 +103,27 @@ while (not endprogram):
         F10_help.help(section)
         
     elif command == "list sidequest":
-        F14_sidequest.sidequest(sidequest_data,currentUser)
-        
+        monster, foundmonster = F14_sidequest.sidequest(sidequest_data,currentUser)
+        if (foundmonster):
+            currentUser, quit, create = F04_foundmonster.foundmonster(currentUser, monster)
+            levelup = int(currentUser[13]) + 1
+            if levelup > 3:
+                currentUser[13] = "3"
+            else:
+                currentUser[13] = str(levelup)
+
+            if (quit):
+                simpan = F12_exitgame.exit()
+                if (simpan):
+                    data = [dragonborn_data, item_data, sidequest_data]
+                    names = ["dragonborn.csv", "item.csv", "sidequest.csv"]
+                    F11_saveandloadgame.save(data, names, currentUser)
+                print("Thanks for playing skuyrim, goodbye!")
+                endprogram = True
+
+            elif (create):
+                dragonborn_data, currentUser = F01_createdragonborn.createdragonborn(dragonborn_data, currentUser)
+
     elif command == "save":
         data = [dragonborn_data, item_data, sidequest_data]
         names = ["dragonborn.csv", "item.csv", "sidequest.csv"]
