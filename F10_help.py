@@ -8,7 +8,7 @@ def help(section):
         print("- save")
         print("- exit")
         print("- alduskuy")
-        print("- side quest")
+        print("- list sidequest")
     
     elif section == 1:
         print("Aksi yang dapat dilakukan:")
