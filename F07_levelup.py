@@ -1,7 +1,7 @@
-def levelup(currentUser, levelup):
-      maxHP = ((levelup - int(currentUser[4])) * 100) + int(currentUser[2])
+def levelup(currentUser, increaselevel):
+      maxHP = ((increaselevel - int(currentUser[4])) * 100) + int(currentUser[2])
       currentUser[2] = str(maxHP)
-      currentUser[4] = str(levelup)
+      currentUser[4] = str(increaselevel)
       print("You leveled up!")
       print("Choose what attribute to increase :")
       

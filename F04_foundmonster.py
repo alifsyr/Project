@@ -1,37 +1,36 @@
 import modules, F10_help
-from random import choice 
-def foundmonster(currentUser, monster_data, gold):
+
+def foundmonster(currentUser, monster_data):
+    endfight = False
     data = []
     for i in monster_data:
         if i[0] != "ID":
             data = data + [i]
-
     monster = modules.randomchoice(data)
-    print("You have met a "+ monster[1] +", will you fight or will you flee ( luck * 10% )?\n"+monster[1]+" stats: \nAttack:",monster[2] ,"\nDefense:", monster[3],"\nHealth:", monster[4])
-    result = str(input("$ "))
 
-    if result == "fight":
-        endfight = False
+    while (not endfight):
         quit = False
         newChar = False
-        currentUser , quit, newChar, gold = fight(monster, currentUser, endfight, quit, newChar, gold)
 
-        return currentUser, quit ,newChar, gold
+        print("You have met a "+ monster[1] +", will you fight or will you flee ?\n"+monster[1]+" stats: \nAttack:",monster[2] ,"\nDefense:", monster[3],"\nHealth:", monster[4])
+        result = str(input("$ "))
 
-    elif result == "flee":
-        poss = [1,2,3]
-        if choice(poss) == 1:
-            quit = False
-            newChar = False
-            currentUser[8] += 1
-       
-        elif currentUser [8] >= 10 :
-            quit = False
-            newChar = False
+        if result == "fight":
+            currentUser , quit, newChar, endfight = fight(monster, currentUser, endfight, quit, newChar)
 
-        return currentUser, quit, newChar, gold
+            return currentUser, quit, newChar
+        elif result == "flee":
+            result = modules.randomrange(501)
+            if result >= (500 - int(currentUser[8])):
 
-def fight(monster, currentUser, endfight, quit, newChar, gold):
+                return currentUser, quit, newChar
+            else:
+                print("Bad luck ! You can't run from the monster")
+                currentUser , quit, newChar, endfight = fight(monster, currentUser, endfight, quit, newChar)
+
+                return currentUser, quit, newChar
+
+def fight(monster, currentUser, endfight, quit, newChar):
     while (not endfight):
         print("What action will you take?\n1. strike - "+ currentUser[5] +"\n2. magic - "+ currentUser[6] +"\n3. flee")
         result = str(input("$ "))
@@ -46,7 +45,7 @@ def fight(monster, currentUser, endfight, quit, newChar, gold):
                     monster[4] = str(HP)
                     if int(monster[4]) <= 0:
                         print(monster[1],"took",currentUser[5],"dmg and health dropped to 0")
-                        gold, currentUser = win(currentUser, gold, monster)
+                        currentUser = win(currentUser, monster)
                         quit = False
                         newChar = False
                         endfight = True
@@ -64,7 +63,7 @@ def fight(monster, currentUser, endfight, quit, newChar, gold):
 
                 if int(monster[4]) <= 0:
                     print(monster[1],"took",currentUser[5],"dmg and health dropped to 0")
-                    gold, currentUser = win(currentUser, gold, monster)
+                    currentUser = win(currentUser, monster)
                     quit = False
                     newChar = False
                     endfight = True
@@ -79,7 +78,7 @@ def fight(monster, currentUser, endfight, quit, newChar, gold):
 
                     else:
                         print(monster[1],"took",currentUser[5],"dmg and health dropped to 0")
-                        gold, currentUser = win(currentUser, gold, monster)
+                        currentUser = win(currentUser, monster)
                         quit = False
                         newChar = False
                         endfight = True
@@ -96,7 +95,7 @@ def fight(monster, currentUser, endfight, quit, newChar, gold):
                     monster[4] = str(HP)
                     if int(monster[4]) <= 0:
                         print(monster[1],"took",currentUser[6],"dmg and health dropped to 0")
-                        gold, currentUser = win(currentUser, gold, monster)
+                        currentUser = win(currentUser, monster)
                         quit = False
                         newChar = False
                         endfight = True
@@ -114,7 +113,7 @@ def fight(monster, currentUser, endfight, quit, newChar, gold):
 
                 if int(monster[4]) <= 0:
                     print(monster[1],"took",currentUser[6],"dmg and health dropped to 0")
-                    gold, currentUser = win(currentUser, gold, monster)
+                    currentUser = win(currentUser, monster)
                     quit = False
                     newChar = False
                     endfight = True
@@ -129,7 +128,7 @@ def fight(monster, currentUser, endfight, quit, newChar, gold):
 
                     else:
                         print(monster[1],"took",currentUser[6],"dmg and health dropped to 0")
-                        gold, currentUser = win(currentUser, gold, monster)
+                        currentUser = win(currentUser, monster)
                         quit = False
                         newChar = False
                         endfight = True
@@ -139,11 +138,17 @@ def fight(monster, currentUser, endfight, quit, newChar, gold):
             F10_help.help(section)
 
         elif result == "flee":
-            quit = False
-            newChar = False
-            endfight = True
+            result = modules.randomrange(501)
+            if result >= (500 - int(currentUser[8])):
+                quit = False
+                newChar = False
+                endfight = True
 
-    return currentUser , quit, newChar , gold
+            else:
+                print("Bad luck ! You can't run from the monster")
+                newChar, quit, currentUser, endfight = fightback(monster, currentUser, quit, newChar,endfight)
+
+    return currentUser , quit, newChar, endfight
 
 def fightback(monster,currentUser,quit,newChar,endfight):
     if int(currentUser[7]) > 0:
@@ -250,21 +255,24 @@ def shieldbroken(currentUser,monster,HP,quit,newChar):
 
             return newChar, quit, currentUser , endfight
 
-def win(currentUser, gold, monster):
+def win(currentUser, monster):
     if monster[1] == "Alduskuy":
         print("You have won the fight! \nGot 10000 gold \nExperience + 1000")
-        gold = gold + 10000
+        gold = int(currentUser[12]) + 10000
         exp  = int(currentUser[9]) + 1000
+        currentUser[12] = str(gold)
+        currentUser[9] = str(exp)
 
-        return gold,currentUser
+        return currentUser
     
     else:
         print("You have won the fight! \nGot 10 gold \nExperience + 50")
-        gold = gold + 10
+        gold = int(currentUser[12]) + 10
         exp  = int(currentUser[9]) + 50
         currentUser[9] = str(exp)
+        currentUser[12] = str(gold)
 
-        return gold, currentUser
+        return currentUser
 
 
 

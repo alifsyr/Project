@@ -3,11 +3,14 @@ import csv
 def load():
     dragonborn_data = loadfile("data/dragonborn.csv")
     item_data       = loadfile("data/item.csv")
-    monster_data    = loadfile("data/monster.csv")
     sidequest_data  = loadfile("data/sidequest.csv")
 
-    return dragonborn_data, item_data, monster_data, sidequest_data
+    return dragonborn_data, item_data, sidequest_data
 
+def loadmonster():
+    monster_data    = loadfile("data/monster.csv")
+
+    return monster_data
 
 def loadfile(x):
     with open(x) as csvfile:
@@ -15,7 +18,6 @@ def loadfile(x):
         data = [row for row in reader]
 
     return data
-
 
 def dataload(dragonborn_data, currentUser):
     dummy = [" $NOUSER", "$NOUSER", " $NOUSER", " $NOUSER", " $NOUSER"" $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER", " $NOUSER"]
@@ -33,7 +35,6 @@ def dataload(dragonborn_data, currentUser):
     if command == "Create":
         newChar = True
         return newChar, dummy
-
 
 def save(data, names, currentUser):
     import modules
