@@ -247,6 +247,7 @@ def win(currentUser, monster):
         exp  = int(currentUser[9]) + 1000
         currentUser[12] = str(gold)
         currentUser[9] = str(exp)
+        print("Do you want to create a new character or exit?")
         result = str(input("$ "))
 
         if result == "create":

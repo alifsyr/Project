@@ -12,6 +12,6 @@ def help(section):
     
     elif section == 1:
         print("Aksi yang dapat dilakukan:")
-        print("- attack")
+        print("- strike")
         print("- magic")
         print("- flee")
