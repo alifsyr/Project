@@ -19,27 +19,24 @@ def upgrade(currentUser,attribute):
             if result == i[0]:
                   if i[1] == 'Health':
                         upgrade = int(currentUser[3]) + int(i[2])
-                        currentUser[3] = str(upgrade)
+                        if upgrade >= int(currentUser[2]):
+                              currentUser[3] = currentUser[2]
+                              print("Your HP is already maximum")
 
-                        return currentUser
+                        else:
+                              currentUser[3] = str(upgrade)
 
                   elif i[1] == 'Attack':
                         upgrade = int(currentUser[5]) + int(i[2])
                         currentUser[5] = str(upgrade)
 
-                        return currentUser
-
                   elif i[1] == 'Defense':
                         upgrade = int(currentUser[7]) + int(i[2])
                         currentUser[7] = str(upgrade)
 
-                        return currentUser
-
                   elif i[1] == 'Magic':
                         upgrade = int(currentUser[6]) + int(i[2])
                         currentUser[6] = str(upgrade)
-                  
-                        return currentUser
 
                   elif i[1] == 'Luck':
                         upgrade = int(currentUser[8]) + int(i[2])
@@ -47,8 +44,7 @@ def upgrade(currentUser,attribute):
                               print("Your luck attribute is already in maximum level")
                               currentUser[8] = "400"
 
-                              return currentUser
                         else:
                               currentUser[8] = str(upgrade)
 
-                              return currentUser
+      return currentUser
