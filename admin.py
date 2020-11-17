@@ -3,8 +3,7 @@ import modules, F11_saveandloadgame, F12_exitgame
 dragonborn_data, item_data, sidequest_data = F11_saveandloadgame.load()
 monster_data = F11_saveandloadgame.loadmonster()
 endprogram = False
-data = []
-new_item_arr=[]
+
 while (not endprogram):
     data = []
     password = (input("Enter password: "))
