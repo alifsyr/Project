@@ -1,20 +1,20 @@
 def levelup(currentUser, increaselevel):
-      maxHP = ((increaselevel - int(currentUser[4])) * 100) + int(currentUser[2])
+      maxHP = ((increaselevel - int(currentUser[4])) * 100) + int(currentUser[2]) # menambahkan value maxHP setiap levelup
       currentUser[2] = str(maxHP)
       currentUser[4] = str(increaselevel)
       print("You leveled up!")
       print("Choose what attribute to increase :")
       
-      attribute = [["1","Health","10"],["2","Attack","10"],["3","Defense","10"],["4","Magic","10"],["5","Luck","10"]]
+      attribute = [["1","Health","10"],["2","Attack","10"],["3","Defense","10"],["4","Magic","10"],["5","Luck","10"]] 
       for i in attribute:
-            print(i[0]+".",i[1]+" +"+i[2])
+            print(i[0]+".",i[1]+" +"+i[2]) # menampilkan daftar attribute yang dapat di upgrade beserta nomornya
 
-      currentUser = upgrade(currentUser,attribute)
+      currentUser = upgrade(currentUser,attribute) # meng-upgrade isi currentUser yang sekarang dengan yang telah di upgrade
 
       return currentUser
 
 def upgrade(currentUser,attribute):
-      result = input("add attribute: ")
+      result = input("add attribute: ")  # meng-input nomor attribute yang ingin di upgrade
       for i in attribute:
             if result == i[0]:
                   if i[1] == 'Health':
@@ -24,7 +24,7 @@ def upgrade(currentUser,attribute):
                               print("Your HP is already maximum")
 
                         else:
-                              currentUser[3] = str(upgrade)
+                              currentUser[3] = str(upgrade)  # meng-assign nilai yang telah di uprade ke attribute 
 
                   elif i[1] == 'Attack':
                         upgrade = int(currentUser[5]) + int(i[2])
