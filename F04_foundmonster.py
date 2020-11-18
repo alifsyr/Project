@@ -147,7 +147,7 @@ def fightback(monster,currentUser,quit,newChar,endfight):
             if int(currentUser[3]) <= 0:
                 print(monster[1],"strike for "+ str(dmg) +" dmg")
                 currentUser[3] = "0"
-                print("Game over!\nYour character is die.\nYou can create a new character or quit game.")
+                print("Game over!\nYour character is die.\nYou can create a new character or exit game.")
                 result = str(input("$ "))
 
                 if result == "create":
@@ -186,7 +186,7 @@ def fightback(monster,currentUser,quit,newChar,endfight):
         if int(currentUser[3]) <= 0:
             print(monster[1],"strike for "+ str(monster[2]) +" dmg")
             currentUser[3] = "0"
-            print("Game over!\nYour character is die.\nYou can create a new character or quit game.")
+            print("Game over!\nYour character is die.\nYou can create a new character or exit game.")
             result = str(input("$ "))
 
             if result == "create":
