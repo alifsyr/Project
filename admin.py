@@ -1,9 +1,9 @@
 import modules, F11_saveandloadgame, F12_exitgame
 
-dragonborn_data, item_data, monster_data, sidequest_data = F11_saveandloadgame.load()
+dragonborn_data, item_data, sidequest_data = F11_saveandloadgame.load()
+monster_data = F11_saveandloadgame.loadmonster()
 endprogram = False
-data = []
-new_item_arr=[]
+
 while (not endprogram):
     data = []
     password = (input("Enter password: "))
@@ -16,7 +16,7 @@ while (not endprogram):
         while (not endprogram):
             data = []
             command = str(input("$ "))
-            if command == "switch":
+            if   command == "switch":
                 print("What database do you want to user? (1 - item, 2 - monster)")
                 database = int(input("database: "))
                 modules.printdata(item_data,monster_data,database,data)
@@ -45,7 +45,6 @@ while (not endprogram):
                 item_data = update_arr
                 data = []
                 modules.printdata(item_data,monster_data,1,data)
-                
 
             elif command == "save":
                 currentUser = ["0","Admin"]
@@ -61,5 +60,6 @@ while (not endprogram):
                     names = ["dragonborn.csv", "item.csv", "sidequest.csv"]
                     F11_saveandloadgame.save(data, names, currentUser)
                 exit()
+
     else:
         print("Password salah!")

@@ -4,7 +4,7 @@ def createdragonborn(dragonborn_data,currentUser):
     nama = str(input("Masukan nama character: \n$ ")).capitalize()
     print(nama,"created")
     print("Welcome "+nama+" to the world of Skuyrim!")
-    print("Choose one faction: \n1. Empire (+ 1 attack) \n2. Stromcloacks (+ i magis)")
+    print("Choose one faction: \n1. Empire (+ 1 attack) \n2. Stromcloacks (+ 1 magic)")
 
     result = int(input("Masukkan nomor faction diatas(1/2): \n$ "))
     if result == 1:
