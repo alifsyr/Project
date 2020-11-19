@@ -1,6 +1,7 @@
 import modules
 
 def foundgold(currentUser):
+    # membuat kejadian menemukan gold
     getgold = modules.randomchoice([2,4,6,8,10])
     gold = int(currentUser[12]) + getgold
     exp  = int(currentUser[9]) + 10
