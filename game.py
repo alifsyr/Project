@@ -111,11 +111,20 @@ while (not endprogram):
         monster_data, foundmonster = F14_sidequest.sidequest(sidequest_data,currentUser)
         if (foundmonster):
             currentUser, quit, create = F04_foundmonster.foundmonster(currentUser, monster_data)
-            levelup = int(currentUser[13]) + 1
-            if levelup > 3:
-                currentUser[13] = "3"
-            else:
-                currentUser[13] = str(levelup)
+            for i in monster_data:
+                if i[0] != "ID":
+                    if i[0] == "1":
+                        levelup1 = int(currentUser[11]) + 1
+                        if levelup1 > 3:
+                            currentUser[11] = "3"
+                        else:
+                            currentUser[11] = str(levelup1)
+                    else:
+                        levelup2 = int(currentUser[13]) + 1
+                        if levelup2 > 3:
+                            currentUser[13] = "3"
+                        else:
+                            currentUser[13] = str(levelup2)
 
             if (quit):
                 simpan = F12_exitgame.exit()
