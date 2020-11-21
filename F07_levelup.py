@@ -17,14 +17,14 @@ def upgrade(currentUser,attribute):
       result = input("add attribute: ")  # meng-input nomor attribute yang ingin di upgrade
       for i in attribute:
             if result == i[0]:
-                  if i[1] == 'Health':
+                  if i[1] == 'Health': # melakukan validasi
                         upgrade = int(currentUser[3]) + int(i[2])
                         if upgrade >= int(currentUser[2]):
                               currentUser[3] = currentUser[2]
                               print("Your HP is already maximum")
 
                         else:
-                              currentUser[3] = str(upgrade)  # meng-assign nilai yang telah di uprade ke attribute 
+                              currentUser[3] = str(upgrade)   
 
                   elif i[1] == 'Attack':
                         upgrade = int(currentUser[5]) + int(i[2])
