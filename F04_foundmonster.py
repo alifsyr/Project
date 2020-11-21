@@ -26,7 +26,7 @@ def foundmonster(currentUser, monster_data):
             if result >= (500 - int(currentUser[8])): #apabila result >= angka 500 - luck maka berhasil kabur
 
                 return currentUser, quit, newChar
-           
+
             else: #jika tidak maka akan melawan monster
                 print("Bad luck ! You can't run from the monster")
                 currentUser , quit, newChar, endfight = fight(monster, currentUser, endfight, quit, newChar)
@@ -41,57 +41,59 @@ def fight(monster, currentUser, endfight, quit, newChar):
     magic = False
     rondemagic = 0
     while (not endfight):
+        # melakukan validasi apakah aksi magic dapat dilakukan
         if magic == True:
             rondemagic +=1
             if rondemagic in range(3,100,3):
                 magic = False
-        print("What action will you take?\n1. strike - "+ currentUser[5] +"\n2. magic - "+ currentUser[6] +"\n3. flee")
-        result = str(input("$ ")) # user input aksi yang mau dilakukan
-        if result == "strike": #memilih tipe attack "strike"
-            if int(monster[3]) > 0: #monser memiliki defense
-                dmg = int(monster[3]) - int(currentUser[5])
-                monster[3] = str(dmg)
 
-                if dmg < 0: 
-                    dmg = -dmg
-                    HP = int(monster[4]) - dmg # berapa banyak attack "Strike" karakter yang mengenai monster tatapi teredam defense monster
-                    monster[4] = str(HP)
-                    if int(monster[4]) <= 0: #defense monster break serta mengurangi darah hingga 0 atau kurang dari 0
-                        print(monster[1],"took",currentUser[5],"dmg and health dropped to 0")
-                        currentUser, newChar, quit, endfight = win(currentUser, monster)
+        if magic == False:
+            print("What action will you take?\n1. strike - "+ currentUser[5] +"\n2. magic - "+ currentUser[6] +"\n3. flee")
+            result = str(input("$ ")) # user input aksi yang mau dilakukan
+            if result == "strike": #memilih tipe attack "strike"
+                if int(monster[3]) > 0: #monser memiliki defense
+                    dmg = int(monster[3]) - int(currentUser[5])
+                    monster[3] = str(dmg)
 
-                    else: # defense monster break tetapi tidak membuat HP monster menjadi 0
-                        monster[3] = "0"
-                        print(monster[1]+" took "+ currentUser[5] +" dmg and health dropped to "+ monster[4])
+                    if dmg < 0: 
+                        dmg = -dmg
+                        HP = int(monster[4]) - dmg # berapa banyak attack "Strike" karakter yang mengenai monster tatapi teredam defense monster
+                        monster[4] = str(HP)
+                        if int(monster[4]) <= 0: #defense monster break serta mengurangi darah hingga 0 atau kurang dari 0
+                            print(monster[1],"took",currentUser[5],"dmg and health dropped to 0")
+                            currentUser, newChar, quit, endfight = win(currentUser, monster)
+
+                        else: # defense monster break tetapi tidak membuat HP monster menjadi 0
+                            monster[3] = "0"
+                            print(monster[1]+" took "+ currentUser[5] +" dmg and health dropped to "+ monster[4])
+                            newChar, quit, currentUser, endfight = fightback(monster, currentUser, quit, newChar,endfight)
+
+                    else: # defense mosnter melindunngi monster 
+                        print(monster[1],"took 0 dmg")
                         newChar, quit, currentUser, endfight = fightback(monster, currentUser, quit, newChar,endfight)
+                
+                else: # monster tidak mempunyai Defense
 
-                else: # defense mosnter melindunngi monster 
-                    print(monster[1],"took 0 dmg")
-                    newChar, quit, currentUser, endfight = fightback(monster, currentUser, quit, newChar,endfight)
-            
-            else: # monster tidak mempunyai Defense
-
-                if int(monster[4]) <= 0: 
-                    print(monster[1],"took",currentUser[5],"dmg and health dropped to 0")
-                    currentUser = win(currentUser, monster)
-                    quit = False
-                    newChar = False
-                    endfight = True
-
-                else: #monster menerima damage 
-                    monsterHP = int(monster[4]) - int(currentUser[5])
-
-                    if monsterHP > 0: # darah monster masih ada
-                        monster[4] = str(monsterHP)
-                        print(monster[1]+" took "+ currentUser[5] +" dmg and health dropped to "+ monster[4])
-                        newChar, quit, currentUser, endfight = fightback(monster, currentUser, quit, newChar,endfight)
-
-                    else: # darah monster 0 atau kurang dari 0
+                    if int(monster[4]) <= 0: 
                         print(monster[1],"took",currentUser[5],"dmg and health dropped to 0")
-                        currentUser, newChar, quit, endfight = win(currentUser, monster)
+                        currentUser = win(currentUser, monster)
+                        quit = False
+                        newChar = False
+                        endfight = True
 
-        elif magic == False:
-            if result == "magic": # karakter menyerang dengan tipe serangan "Magic"
+                    else: #monster menerima damage 
+                        monsterHP = int(monster[4]) - int(currentUser[5])
+
+                        if monsterHP > 0: # darah monster masih ada
+                            monster[4] = str(monsterHP)
+                            print(monster[1]+" took "+ currentUser[5] +" dmg and health dropped to "+ monster[4])
+                            newChar, quit, currentUser, endfight = fightback(monster, currentUser, quit, newChar,endfight)
+
+                        else: # darah monster 0 atau kurang dari 0
+                            print(monster[1],"took",currentUser[5],"dmg and health dropped to 0")
+                            currentUser, newChar, quit, endfight = win(currentUser, monster)
+
+            elif result == "magic": # karakter menyerang dengan tipe serangan "Magic"
                 magic = True
                 monsterHP = int(monster[4]) - int(currentUser[6]) # darah monster yang tersisa
 
@@ -104,25 +106,86 @@ def fight(monster, currentUser, endfight, quit, newChar):
                     print(monster[1],"took",currentUser[6],"dmg and health dropped to 0")
                     currentUser, newChar, quit, endfight = win(currentUser, monster)
 
+            elif result == "help": #memilih list2 yang tersedia
+                section = 1
+                F10_help.help(section)
+
+            elif result == "flee": #memilih untuk flee (prosedur sama seperti di randomize def foundmonster (currentUser, monster_data))
+                result = modules.randomrange(501)
+                if result >= (500 - int(currentUser[8])):
+                    quit = False
+                    newChar = False
+                    endfight = True
+
+                else:
+                    print("Bad luck ! You can't run from the monster")
+                    newChar, quit, currentUser, endfight = fightback(monster, currentUser, quit, newChar,endfight)
+
         elif magic == True:
-            if result == "magic":
+            print("What action will you take?\n1. strike - "+ currentUser[5] +"\n2. flee")
+            result = str(input("$ ")) # user input aksi yang mau dilakukan
+            if result == "strike": #memilih tipe attack "strike"
+                if int(monster[3]) > 0: #monser memiliki defense
+                    dmg = int(monster[3]) - int(currentUser[5])
+                    monster[3] = str(dmg)
+
+                    if dmg < 0: 
+                        dmg = -dmg
+                        HP = int(monster[4]) - dmg # berapa banyak attack "Strike" karakter yang mengenai monster tatapi teredam defense monster
+                        monster[4] = str(HP)
+                        if int(monster[4]) <= 0: #defense monster break serta mengurangi darah hingga 0 atau kurang dari 0
+                            print(monster[1],"took",currentUser[5],"dmg and health dropped to 0")
+                            currentUser, newChar, quit, endfight = win(currentUser, monster)
+
+                        else: # defense monster break tetapi tidak membuat HP monster menjadi 0
+                            monster[3] = "0"
+                            print(monster[1]+" took "+ currentUser[5] +" dmg and health dropped to "+ monster[4])
+                            newChar, quit, currentUser, endfight = fightback(monster, currentUser, quit, newChar,endfight)
+
+                    else: # defense mosnter melindunngi monster 
+                        print(monster[1],"took 0 dmg")
+                        newChar, quit, currentUser, endfight = fightback(monster, currentUser, quit, newChar,endfight)
+                
+                else: # monster tidak mempunyai Defense
+
+                    if int(monster[4]) <= 0: 
+                        print(monster[1],"took",currentUser[5],"dmg and health dropped to 0")
+                        currentUser = win(currentUser, monster)
+                        quit = False
+                        newChar = False
+                        endfight = True
+
+                    else: #monster menerima damage 
+                        monsterHP = int(monster[4]) - int(currentUser[5])
+
+                        if monsterHP > 0: # darah monster masih ada
+                            monster[4] = str(monsterHP)
+                            print(monster[1]+" took "+ currentUser[5] +" dmg and health dropped to "+ monster[4])
+                            newChar, quit, currentUser, endfight = fightback(monster, currentUser, quit, newChar,endfight)
+
+                        else: # darah monster 0 atau kurang dari 0
+                            print(monster[1],"took",currentUser[5],"dmg and health dropped to 0")
+                            currentUser, newChar, quit, endfight = win(currentUser, monster)
+
+            elif result == "magic":
                 rondemagic -=1
                 print("Tidak bisa pakai magic!")
+                
 
-        elif result == "help": #memilih list2 yang tersedia
-            section = 1
-            F10_help.help(section)
+            elif result == "help": #memilih list2 yang tersedia
+                section = 1
+                F10_help.help(section)
 
-        elif result == "flee": #memilih untuk flee (prosedur sama seperti di randomize def foundmonster (currentUser, monster_data))
-            result = modules.randomrange(501)
-            if result >= (500 - int(currentUser[8])):
-                quit = False
-                newChar = False
-                endfight = True
+            elif result == "flee":  #memilih untuk flee (prosedur sama seperti di randomize def foundmonster (currentUser, monster_data))
+                result = modules.randomrange(501)
+                if result >= (500 - int(currentUser[8])):
+                    quit = False
+                    newChar = False
+                    endfight = True
 
-            else:
-                print("Bad luck ! You can't run from the monster")
-                newChar, quit, currentUser, endfight = fightback(monster, currentUser, quit, newChar,endfight)
+                else:
+                    print("Bad luck ! You can't run from the monster")
+                    newChar, quit, currentUser, endfight = fightback(monster, currentUser, quit, newChar,endfight)
 
     return currentUser , quit, newChar, endfight
 
