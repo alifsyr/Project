@@ -12,7 +12,7 @@ while (not endprogram):
         print("What database do you want to user? (1 - item, 2 - monster)")
         database = int(input("database: ")) # Pemain memilih database yang ingin ditampilkan
         modules.printdata(item_data, monster_data, database, data)  # Progam menampilkan database sesuai input yang diberikan
-    
+
         while (not endprogram):
             data = []
             command = str(input("$ "))  # Pemain memberikan input aksi yang ingin dilakukan

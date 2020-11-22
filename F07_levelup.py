@@ -17,7 +17,7 @@ def upgrade(currentUser,attribute):
       result = input("add attribute: ")  # meng-input nomor attribute yang ingin di upgrade
       for i in attribute:
             if result == i[0]:
-                  if i[1] == 'Health': # melakukan validasi
+                  if i[1] == 'Health': 
                         upgrade = int(currentUser[3]) + int(i[2])
                         if upgrade >= int(currentUser[2]):
                               currentUser[3] = currentUser[2]

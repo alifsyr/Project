@@ -7,11 +7,12 @@ def sidequest(sidequest_data,currentUser):
     for i in sidequest_data:
         if i[0] != "ID":
             if  currentUser[11] == i[1] and i[0] == "1":
-                sidequest_arr +=[[i[0],i[2],i[3]]]
+                sidequest_arr +=[[i[0],i[2],i[3]]] # memasukan data monster pada sidequest pertama sesuai dengan level karakter
                 print(i[0]+".",i[2],"- kill",i[3])
             elif currentUser[13] == i[1] and i[0] == "2":
-                sidequest_arr +=[[i[0],i[2],i[3]]]
+                sidequest_arr +=[[i[0],i[2],i[3]]] # memasukan data monster pada sidequest kedua sesuai dengan level karakter
                 print(i[0]+".",i[2],"- kill",i[3])
+
     result = input("What do you want to do? (type cancel to cancel)\n$ ")   # Pemain memebrikan input nomor sidequest atau cancel
     while result != "cancel":   # Selama pemain tidak memberikan input cancel
         # Melakukan looping berdasarkan array sidequest_arr
