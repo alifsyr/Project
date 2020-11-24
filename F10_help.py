@@ -1,5 +1,5 @@
 def help(section):
-    if section == 0:
+    if section == 0:                            # 0 = Ketika di Lobby
         print("Aksi yang dapat dilakukan:")
         print("- explore")
         print("- status")
@@ -10,7 +10,7 @@ def help(section):
         print("- alduskuy")
         print("- list sidequest")
     
-    elif section == 1:
+    elif section == 1:                          # 1 = Ketika didalam Pertarungan
         print("Aksi yang dapat dilakukan:")
         print("- strike")
         print("- magic")
