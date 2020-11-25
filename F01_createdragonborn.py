@@ -21,7 +21,7 @@ def createdragonborn(dragonborn_data,currentUser):
         dragonborn_data += [newchar]
         currentUser = newchar
     
-    print("Welcome back to the world of Skuyrim "+currentUser[1]+"!")
+    print("Welcome to the world of Skuyrim "+currentUser[1]+"!")
 
     return dragonborn_data,currentUser
 
